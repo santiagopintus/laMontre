@@ -1,0 +1,91 @@
+:root {
+    --primary-font: 'Playfair Display', serif;
+    --secondary-font: 'Cinzel', serif;
+    --primary: #c7c7c7;
+    --black: #000000;
+}
+
+body, html {
+    margin: 0;
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+    font-family: var(--primary-font);
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: var(--primary);
+    font-size: 1.6rem;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--secondary-font);
+    font-weight: 400;
+}
+h1 {font-size: 5.2rem;}
+h2 {font-size: 3.6rem;}
+h3 {font-size: 3.2rem;}
+h4 {font-size: 2.8rem;}
+
+/* Utilidades */
+.container {
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header a {
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    transition: all 300ms ease;
+}
+.header a:hover {
+    letter-spacing: .3rem;
+}
+.header nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 49rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+.header nav ul li {
+    display: inline-block;
+    text-align: center;
+}
+.header nav ul li a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 2.4rem;
+    font-family: var(--secondary-font);
+    transition: all 300ms ease;
+}
+.header nav ul li:hover a{
+    letter-spacing: .3rem;
+}
+/* HOME */
+.home-section {
+    text-align: center;
+}
+.home-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.home-section__grid img {
+    max-width: 100%;
+}
+.home-section__grid p {
+    line-height: 1.8;
+    letter-spacing: .5px;
+}
