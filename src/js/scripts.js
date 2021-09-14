@@ -21,8 +21,8 @@ function main() {
     agregarReloj('Casio', 'A158wa', 4950, 'digital', false);
     agregarReloj('Casio', 'Mq-24', 2980, 'analógico', false);
     agregarReloj('Diesel', '6628', 4696.09, 'analógico', false);
-    agregarReloj('Diesel', '6630', '4586.75', 'analógico', false);
-    agregarReloj('Stone', 'SMT1058MN', '3079', 'digital', true);
+    agregarReloj('Diesel', '6630', 4586.75, 'analógico', false);
+    agregarReloj('Stone', 'SMT1058MN', 3079, 'digital', true);
     agregarReloj('Mistral', 'SMTM7', 12686.41, 'analógico', true);
     agregarReloj('Sweet', 'GpsPro', 12127, 'digital', true);
 
