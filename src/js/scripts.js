@@ -1,6 +1,19 @@
 alert('Hola, cómo estás? Bienvenido a la tienda de relojes. Eligirás un reloj y podrás evaluar los diferentes métodos de pago.')
 
-let relojes = [];
+let relojes = [
+    ['Xiaomi', 'Smart Band 5', 2939, 'digital', true],
+    ['Skmei', '9096', 4190, 'analógico', false],
+    ['Skmei', '1251', 2499, 'digital', false],
+    ['Casio', 'A158wa', 4950, 'digital', false],
+    ['Casio', 'Mq-24', 2980, 'analógico', false],
+    ['Diesel', '6628', 4696.09, 'analógico', false],
+    ['Diesel', '6630', 4586.75, 'analógico', false],
+    ['Stone', 'SMT1058MN', 3079, 'digital', true],
+    ['Mistral', 'SMTM7', 12686.41, 'analógico', true],
+    ['Sweet', 'GpsPro', 12127, 'digital', true]
+];
+
+let relojesObj = []
 let precioTotal;
 let cuota;
 
@@ -15,23 +28,14 @@ class Reloj {
 }
 
 function main() {
-    agregarReloj('Xiaomi', 'Smart Band 5', 2939, 'digital', true);
-    agregarReloj('Skmei', '9096', 4190, 'analógico', false);
-    agregarReloj('Skmei', '1251', 2499, 'digital', false);
-    agregarReloj('Casio', 'A158wa', 4950, 'digital', false);
-    agregarReloj('Casio', 'Mq-24', 2980, 'analógico', false);
-    agregarReloj('Diesel', '6628', 4696.09, 'analógico', false);
-    agregarReloj('Diesel', '6630', 4586.75, 'analógico', false);
-    agregarReloj('Stone', 'SMT1058MN', 3079, 'digital', true);
-    agregarReloj('Mistral', 'SMTM7', 12686.41, 'analógico', true);
-    agregarReloj('Sweet', 'GpsPro', 12127, 'digital', true);
+    agregarReloj();
 
     mostrarRelojes();
 
     let relojPrompt = 'De los que se muestran en la consola, cuál número de reloj eliges?'
     let relojUsuario = obtenerDatos(relojPrompt);
     
-    let { marca, modelo, precio, tipo, smart } = relojes[relojUsuario - 1];
+    let { marca, modelo, precio, tipo, smart } = relojesObj[relojUsuario - 1];
     mostrarInfoReloj(marca, modelo, precio, tipo, smart);
 
     let cantCuotasPrompt = 'En cuántas cuotas deseas pagarlo?'
@@ -43,14 +47,17 @@ function main() {
 }
 
 
-function agregarReloj(marca, modelo, precio, tipo, smart) {
-    let reloj = new Reloj(marca, modelo, precio, tipo, smart);
-    relojes.push(reloj);
+function agregarReloj() {
+    for (let reloj of relojes) {
+       let [ marca, modelo, precio, tipo, smart ] = reloj
+       let relojObj = new Reloj(marca, modelo, precio, tipo, smart);
+       relojesObj.push(relojObj);
+    }
 }
 
 function mostrarRelojes() {
     let i = 1;
-    for (let reloj of relojes) {
+    for (let reloj of relojesObj) {
         console.log(
             `${i} . ${reloj.marca} ${reloj.modelo}
             Precio: $${reloj.precio}
