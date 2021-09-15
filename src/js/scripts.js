@@ -1,4 +1,4 @@
-alert('Hola, cómo estás? Bienvenido a la tienda de relojes. Eligirás un reloj y podrás evaluar el precio final dependiendo de la cantidad de cuotas que elijas. (Abre la consola y recarga la página).')
+alert('Hola, cómo estás? Bienvenido a la tienda de relojes. Eligirás un reloj y podrás evaluar el precio final dependiendo de la cantidad de cuotas que elijas.\n1 - Abre la consola\n2 - Recarga la página\n3 - Ingresa el orden para ver los relojes.')
 
 let relojes = [
     ['Xiaomi', 'Smart Band 5', 2939, true, true],
@@ -35,13 +35,13 @@ function main() {
     
     mostrarRelojes();
     
-    let relojUsuario = obtenerReloj();
+    let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`, relojes.length);
     
     let { marca, modelo, precio, tipo, smart } = relojesObj[relojUsuario - 1];
     mostrarInfoReloj(marca, modelo, precio, tipo, smart);
 
-    let cantCuotasPrompt = 'En cuántas cuotas deseas pagarlo?'
-    let cantCuotas = obtenerDatos(cantCuotasPrompt);
+    let cantCuotasPrompt = 'En cuántas cuotas deseas pagarlo? (Máximo 24)'
+    let cantCuotas = obtenerDatos(cantCuotasPrompt, 24);
     
     calcularCuotas(precio, cantCuotas);
 
@@ -50,7 +50,7 @@ function main() {
 
 function obtenerCriterioOrden() {
     let prompt = 'En qué orden quieres ordenar los relojes?\n1 - Marca\n2 - Modelo\n3 - Precio\n4 - Tipo\n5 - Smart o no \n(Ingresa solo números entre 1 y 5)'
-    criterio = obtenerDatos(prompt) - 1;
+    criterio = obtenerDatos(prompt, 5) - 1;
     ordenarRelojes(criterio);
 }
 
@@ -101,27 +101,18 @@ function mostrarRelojes() {
     }
 }
 
-function obtenerReloj() {
-    relojInvalido = true
-    while (relojInvalido) {
-        let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`);
-        if (relojUsuario <= relojes.length && relojUsuario > 0) {
-            relojInvalido = false;
-            return relojUsuario;
-        } else {
-            alert('El reloj elegido debe ser entre 1 y ' + relojes.length);
-        }
-    }
-}
-
-function obtenerDatos(pregunta) {
+function obtenerDatos(pregunta, limite) {
     datosInvalidos = true
 
     while (datosInvalidos) {
         respuesta = parseInt(prompt(pregunta));
         
         if (!isNaN(respuesta)) {
-            datosInvalidos = false;
+            if (respuesta <= limite && respuesta > 0) {
+                datosInvalidos = false;
+            } else {
+                alert('Tu respuesta debe ser entre 1 y ' + limite);
+            }
         } else {
             alert('Tu respuesta debe ser un número entero, sin símbolos.');
         }
