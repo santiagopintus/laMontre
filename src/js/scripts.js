@@ -1,33 +1,36 @@
-alert('Hola, cómo estás? Bienvenido a la tienda de relojes. Eligirás un reloj y podrás evaluar el precio final dependiendo de la cantidad de cuotas que elijas.\n1 - Abre la consola\n2 - Recarga la página\n3 - Ingresa el orden para ver los relojes.')
 
 let relojes = [
-    ['Xiaomi', 'Smart Band 5', 2939, true, true],
-    ['Skmei', '9096', 4190, false, false],
-    ['Skmei', '1251', 2499, true, false],
-    ['Casio', 'A158wa', 4950, true, false],
-    ['Casio', 'Mq-24', 2980, false, false],
-    ['Diesel', '6628', 4696.09, false, false],
-    ['Diesel', '6630', 4586.75, false, false],
-    ['Stone', 'SMT1058MN', 3079, true, true],
-    ['Mistral', 'SMTM7', 12686.41, false, true],
-    ['Sweet', 'GpsPro', 12127, true, true]
+    ['Xiaomi', 'Smart Band 5', 2939, true, true, 'Xiaomi_SmartBand5.jpg'],
+    ['Skmei', '9096', 4190, false, false, 'Skmei_9096.webp'],
+    ['Skmei', '1251', 2499, true, false, 'Skmei_1251.jpg'],
+    ['Casio', 'A158wa', 4950, true, false, 'Casio_A158wa.jpg'],
+    ['Casio', 'Mq-24', 2980, false, false, 'Casio_Mq-24.jpg'],
+    ['Diesel', '6628', 4696.09, false, false, 'Diesel_6628.jpg'],
+    ['Diesel', '6630', 4586.75, false, false, 'Diesel_6630.jpg'],
+    ['Mistral', 'SMTM7', 12686.41, false, true, 'Mistral_SMTM7.jpg'],
+    ['Sweet', 'GpsPro', 12127, true, true, 'Sweet_GpsPro.jpg']
 ];
+
 let interes = 1.2
 let relojesObj = []
 let precioTotal;
 let cuota;
-
+let nombre = '';
+const imagenesPath = 'src/img/';
 class Reloj {
-    constructor(marca, modelo, precio, tipo, smart) {
+    constructor(marca, modelo, precio, tipo, smart, source) {
         this.marca = marca,
         this.modelo = modelo,
         this.precio = parseFloat(precio),
         this.tipo = tipo,
-        this.smart = smart    
+        this.smart = smart,
+        this.source = source    
     }
 }
 
 function main() {
+
+    nombre = prompt('Hola! Cómo te llamas?');
     
     obtenerCriterioOrden();
     
@@ -35,17 +38,17 @@ function main() {
     
     mostrarRelojes();
     
-    let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`, relojes.length);
+    // let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`, relojes.length);
     
-    let { marca, modelo, precio, tipo, smart } = relojesObj[relojUsuario - 1];
-    mostrarInfoReloj(marca, modelo, precio, tipo, smart);
+    // let { marca, modelo, precio, tipo, smart, source } = relojesObj[relojUsuario - 1];
+    // mostrarInfoReloj(marca, modelo, precio, tipo, smart, source);
 
-    let cantCuotasPrompt = 'En cuántas cuotas deseas pagarlo? (Máximo 24)'
-    let cantCuotas = obtenerDatos(cantCuotasPrompt, 24);
+    // let cantCuotasPrompt = 'En cuántas cuotas deseas pagarlo? (Máximo 24)'
+    // let cantCuotas = obtenerDatos(cantCuotasPrompt, 24);
     
-    calcularCuotas(precio, cantCuotas);
+    // calcularCuotas(precio, cantCuotas);
 
-    mostrarResumen(marca, modelo, cantCuotas);
+    // mostrarResumen(marca, modelo, cantCuotas);
 }
 
 function obtenerCriterioOrden() {
@@ -56,8 +59,8 @@ function obtenerCriterioOrden() {
 
 function agregarReloj() {
     for (let reloj of relojes) {
-       let [ marca, modelo, precio, tipo, smart ] = reloj
-       let relojObj = new Reloj(marca, modelo, precio, tipo, smart);
+       let [ marca, modelo, precio, tipo, smart, source ] = reloj
+       let relojObj = new Reloj(marca, modelo, precio, tipo, smart, source);
        relojesObj.push(relojObj);
     }
 }
@@ -89,15 +92,22 @@ function ordenarRelojes(i, orden = 'menor') {
 }
 
 function mostrarRelojes() {
-    let i = 1;
-    for (let reloj of relojesObj) {
-        console.log(
-            `${i} . ${reloj.marca} ${reloj.modelo}
-            Precio: $${reloj.precio}
-            Tipo: ${reloj.tipo ? 'digital' : 'analógico'}
-            Es smart: ${reloj.smart ? 'Si' : 'No'}`
-        );
-        i++;
+    const contenedorRelojes = document.getElementById('contenedorRelojes');
+    for (const reloj of relojesObj) {
+        let relojDiv = document.createElement('DIV');
+        relojDiv.classList.add('reloj');
+        relojDiv.innerHTML = `
+                            <img class="reloj-img" src="${imagenesPath}${reloj.source}">
+                            <div class="info-ppal">
+                                <p class="titulo">${reloj.marca} ${reloj.modelo}</p>
+                                <p class="precio">$${reloj.precio}</p>
+                            </div>
+                            <div class="info-secundaria">
+                                <p>Tipo: ${reloj.tipo ? 'digital' : 'analógico'}</p>
+                                <p>Es smart: ${reloj.smart ? 'Si' : 'No'}</p>
+                            </div>
+                            `;
+        contenedorRelojes.appendChild(relojDiv);
     }
 }
 
@@ -120,7 +130,7 @@ function obtenerDatos(pregunta, limite) {
     return respuesta;
 }
 
-function mostrarInfoReloj(marca, modelo, precio, tipo, smart) {
+function mostrarInfoReloj(marca, modelo, precio, tipo, smart, source) {
     alert(`
     El reloj ${marca} ${modelo}, es de tipo ${tipo ? 'digital' : 'analógico'} y ${smart ? 'es smart' : 'no es smart'}.
     Su precio es de $${precio}.

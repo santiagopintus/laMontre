@@ -1,8 +1,22 @@
 :root {
     --primary-font: 'Playfair Display', serif;
     --secondary-font: 'Cinzel', serif;
-    --primary: #c7c7c7;
-    --black: #000000;
+    --price-font: 'Roboto Mono', monospace;
+
+    --white: #f8f9fa;
+    --gris1: #e9ecef;
+    --gris2: #dee2e6;
+    --gris3: #ced4da;
+    --gris4: #adb5bd;
+    --gris5: #6c757d;
+    --gris6: #495057;
+    --gris7: #343a40;
+    --black: #212529;
+
+    --primary: var(--white);
+    --secondary: var(--gris5);
+    --accent1: var(--gris6);
+    --accent2: var(--gris7);
 }
 
 body, html {
@@ -44,7 +58,7 @@ h4 {font-size: 2.8rem;}
 .header a {
     text-align: center;
     text-decoration: none;
-    color: #000000;
+    color: var(--black);
     transition: all 300ms ease;
 }
 .header a:hover {
@@ -88,4 +102,58 @@ h4 {font-size: 2.8rem;}
 .home-section__grid p {
     line-height: 1.8;
     letter-spacing: .5px;
+}
+/*++++++++++++ MAIN (RELOJES) ++++++++++++*/
+/* Titulo */
+.opciones-relojes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor-relojes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    row-gap: 2rem;
+    margin-bottom: 5rem;
+}
+.reloj {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.reloj-img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.reloj .info-secundaria {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.reloj .info-secundaria p {
+    margin: .5rem 0;
+}
+.reloj .info-ppal,
+.reloj .info-secundaria {
+    text-align: center;
+}
+.reloj .info-ppal .titulo{
+    font-size: 2.5rem;
+    padding: 0 1rem;
+    margin: 0 0 .5rem 0;
+}
+.reloj .info-ppal .precio{
+    background-color: var(--accent1);
+    font-weight: 300;
+    padding: 1rem 0;
+    font-size: 3rem;
+    margin: 0 0 .5rem 0;
+    font-family: var(--price-font);
 }

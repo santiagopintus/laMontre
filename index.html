@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
     <!-- Estilos -->
     <link rel="stylesheet" href="src/css/styles.css">
     <!-- Título -->
@@ -31,7 +31,8 @@
 
     <section class="home-section">
         <div class="container">
-            <h2>Convierte tus sueños en realidad</h2>
+            <h2 class="saludo">Bienvenido!</h2>
+            <h3>Convierte tus sueños en realidad</h3>
             <div class="home-section__grid">
                 <img src="src/img/Home-watch.png" alt="Un reloj rolex de lujo">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia dolorum, sit quaerat magni laudantium numquam tenetur reiciendis voluptatum illum vitae culpa cumque animi provident aspernatur consectetur quis eaque cupiditate minima.
@@ -40,6 +41,23 @@
         </div>
     </section>
     
+    <main class="container">
+        <div class="opciones-relojes">
+            <h2>Elige tu reloj favorito!</h2>
+            <div class="field">
+                <label for="orden">Ordenar por:</label>
+                <select name="orden" id="orden">
+                    <option value="0">Marca</option>
+                    <option value="2">Precio</option>
+                    <option value="3">Tipo</option>
+                    <option value="4">Smart o no</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="contenedor-relojes" id="contenedorRelojes"></div>
+
+    </main>
     <script src="src/js/scripts.js"></script>
 </body>
 </html>
