@@ -1,159 +1,150 @@
-:root {
-    --primary-font: 'Playfair Display', serif;
-    --secondary-font: 'Cinzel', serif;
-    --price-font: 'Roboto Mono', monospace;
-
-    --white: #f8f9fa;
-    --gris1: #e9ecef;
-    --gris2: #dee2e6;
-    --gris3: #ced4da;
-    --gris4: #adb5bd;
-    --gris5: #6c757d;
-    --gris6: #495057;
-    --gris7: #343a40;
-    --black: #212529;
-
-    --primary: var(--white);
-    --secondary: var(--gris5);
-    --accent1: var(--gris6);
-    --accent2: var(--gris7);
-}
-
-body, html {
-    margin: 0;
-}
-*, *::after, *::before {
-    box-sizing: border-box;
-    font-family: var(--primary-font);
-}
+/* Globales */
+body,
 html {
-    font-size: 62.5%;
-}
+  margin: 0; }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif; }
+
+html {
+  font-size: 62.5%; }
+
 body {
-    background-color: var(--primary);
-    font-size: 1.6rem;
-}
+  background-color: #e9ecef;
+  font-size: 1.6rem; }
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--secondary-font);
-    font-weight: 400;
-}
-h1 {font-size: 5.2rem;}
-h2 {font-size: 3.6rem;}
-h3 {font-size: 3.2rem;}
-h4 {font-size: 2.8rem;}
+  font-family: "Cinzel", serif;
+  font-weight: 400; }
+
+h1 {
+  font-size: 5.2rem; }
+
+h2 {
+  font-size: 3.6rem; }
+
+h3 {
+  font-size: 3.2rem; }
+
+h4 {
+  font-size: 2.8rem; }
 
 /* Utilidades */
 .container {
-    width: 90%;
-    max-width: 120rem;
-    margin: 0 auto;
-}
+  width: 90%;
+  max-width: 120rem;
+  margin: 0 auto; }
 
+/* Layout */
 /* Header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.header a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .header a {
     text-align: center;
     text-decoration: none;
-    color: var(--black);
-    transition: all 300ms ease;
-}
-.header a:hover {
-    letter-spacing: .3rem;
-}
-.header nav ul{
+    color: #212529;
+    transition: all 300ms ease; }
+  .header a:hover {
+    letter-spacing: .1rem; }
+  .header nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
     min-width: 49rem;
     text-align: center;
     display: flex;
-    justify-content: space-around;
-}
-.header nav ul li {
-    display: inline-block;
-    text-align: center;
-}
-.header nav ul li a {
-    text-decoration: none;
-    color: var(--black);
-    font-size: 2.4rem;
-    font-family: var(--secondary-font);
-    transition: all 300ms ease;
-}
-.header nav ul li:hover a{
-    letter-spacing: .3rem;
-}
+    justify-content: space-around; }
+    .header nav ul li {
+      display: inline-block;
+      text-align: center; }
+      .header nav ul li a {
+        text-decoration: none;
+        color: #212529;
+        font-size: 2.4rem;
+        font-family: "Cinzel", serif;
+        transition: all 300ms ease; }
+      .header nav ul li:hover a {
+        letter-spacing: .3rem; }
+
 /* HOME */
 .home-section {
-    text-align: center;
-}
+  text-align: center; }
+
 .home-section__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
 
 .home-section__grid img {
-    max-width: 100%;
-}
+  max-width: 100%; }
+
 .home-section__grid p {
-    line-height: 1.8;
-    letter-spacing: .5px;
-}
-/*++++++++++++ MAIN (RELOJES) ++++++++++++*/
+  line-height: 1.8;
+  letter-spacing: .5px; }
+
+.saludo {
+  font-family: "Cinzel", serif; }
+
 /* Titulo */
 .opciones-relojes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
 
 .contenedor-relojes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    row-gap: 2rem;
-    margin-bottom: 5rem;
-}
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  row-gap: 2rem;
+  margin-bottom: 5rem; }
+
 .reloj {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--secondary);
-    color: var(--white);
-}
-
-.reloj-img {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-.reloj .info-secundaria {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
-}
-.reloj .info-secundaria p {
-    margin: .5rem 0;
-}
-.reloj .info-ppal,
-.reloj .info-secundaria {
-    text-align: center;
-}
-.reloj .info-ppal .titulo{
-    font-size: 2.5rem;
-    padding: 0 1rem;
-    margin: 0 0 .5rem 0;
-}
-.reloj .info-ppal .precio{
-    background-color: var(--accent1);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background-color: #ffffff;
+  color: #ffffff;
+  padding: 1rem;
+  cursor: pointer;
+  overflow: hidden; }
+  .reloj:hover .info-secundaria {
+    transform: translateY(0); }
+  .reloj .img-container {
+    width: 100%;
+    overflow: hidden; }
+    .reloj .img-container .reloj-img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto; }
+  .reloj .info-secundaria {
+    background-color: #ced4da;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 2rem 0;
+    transform: translateY(100%);
+    transition: transform 300ms ease; }
+    .reloj .info-secundaria p {
+      text-align: center;
+      color: #212529; }
+  .reloj .titulo {
+    padding: 2rem; }
+    .reloj .titulo p {
+      color: #212529;
+      text-align: center;
+      font-size: 2.5rem;
+      padding: 0 1rem;
+      margin: 0 0 .5rem 0; }
+  .reloj .precio {
     font-weight: 300;
+    color: #212529;
+    text-align: center;
     padding: 1rem 0;
     font-size: 3rem;
-    margin: 0 0 .5rem 0;
-    font-family: var(--price-font);
-}
+    margin: 0;
+    font-family: "Open Sans", sans-serif; }

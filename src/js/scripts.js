@@ -1,22 +1,26 @@
 
 let relojes = [
-    ['Xiaomi', 'Smart Band 5', 2939, true, true, 'Xiaomi_SmartBand5.jpg'],
-    ['Skmei', '9096', 4190, false, false, 'Skmei_9096.webp'],
-    ['Skmei', '1251', 2499, true, false, 'Skmei_1251.jpg'],
-    ['Casio', 'A158wa', 4950, true, false, 'Casio_A158wa.jpg'],
-    ['Casio', 'Mq-24', 2980, false, false, 'Casio_Mq-24.jpg'],
-    ['Diesel', '6628', 4696.09, false, false, 'Diesel_6628.jpg'],
-    ['Diesel', '6630', 4586.75, false, false, 'Diesel_6630.jpg'],
-    ['Mistral', 'SMTM7', 12686.41, false, true, 'Mistral_SMTM7.jpg'],
-    ['Sweet', 'GpsPro', 12127, true, true, 'Sweet_GpsPro.jpg']
+    ['Xiaomi', 'Smart Band 5', 2939, true, true, 'Xiaomi_SmartBand5'],
+    ['Skmei', '9096', 3699, false, false, 'Skmei_9096'],
+    ['Skmei', '1251', 2499, true, false, 'Skmei_1251'],
+    ['Casio', 'A158wa', 4950, true, false, 'Casio_A158wa'],
+    ['Casio', 'Mq-24', 2980, false, false, 'Casio_Mq-24'],
+    ['Diesel', '6628', 4696.09, false, false, 'Diesel_6628'],
+    ['Diesel', '6630', 4586.75, false, false, 'Diesel_6630'],
+    ['Mistral', 'SMTM7', 12686.41, false, true, 'Mistral_SMTM7'],
+    ['Sweet', 'GpsPro', 12127, true, true, 'Sweet_GpsPro']
 ];
 
 let interes = 1.2
 let relojesObj = []
 let precioTotal;
 let cuota;
+//El nombre de la persona
 let nombre = '';
-const imagenesPath = 'src/img/';
+//La ruta a las imágenes de los relojes
+const imagenesPath = 'src/img/relojes/';
+//Este formato funciona si todas las imagenes tienen el mismo formato.
+const formatoImg = '.jpg'
 class Reloj {
     constructor(marca, modelo, precio, tipo, smart, source) {
         this.marca = marca,
@@ -30,7 +34,7 @@ class Reloj {
 
 function main() {
 
-    nombre = prompt('Hola! Cómo te llamas?');
+    saludarUsuario();
     
     obtenerCriterioOrden();
     
@@ -49,6 +53,13 @@ function main() {
     // calcularCuotas(precio, cantCuotas);
 
     // mostrarResumen(marca, modelo, cantCuotas);
+}
+function saludarUsuario() {
+    let nombreUsuario = document.querySelector('#nombreUsuario');
+    
+    nombre = prompt('Hola! Cómo te llamas?');
+    nombre = capitalize(nombre)
+    nombreUsuario.innerText = nombre;
 }
 
 function obtenerCriterioOrden() {
@@ -97,13 +108,17 @@ function mostrarRelojes() {
         let relojDiv = document.createElement('DIV');
         relojDiv.classList.add('reloj');
         relojDiv.innerHTML = `
-                            <img class="reloj-img" src="${imagenesPath}${reloj.source}">
-                            <div class="info-ppal">
-                                <p class="titulo">${reloj.marca} ${reloj.modelo}</p>
-                                <p class="precio">$${reloj.precio}</p>
+                            <div class=titulo>
+                                <p>${reloj.marca} ${reloj.modelo}</p>
+                            </div>
+                            <div class="img-container">
+                                <img class="reloj-img" src="${imagenesPath}${reloj.source}${formatoImg}">
+                            </div>
+                            <div class="precio">
+                                <p>$${reloj.precio}</p>
                             </div>
                             <div class="info-secundaria">
-                                <p>Tipo: ${reloj.tipo ? 'digital' : 'analógico'}</p>
+                                <p>Tipo: ${reloj.tipo ? 'Digital' : 'Analógico'}</p>
                                 <p>Es smart: ${reloj.smart ? 'Si' : 'No'}</p>
                             </div>
                             `;
@@ -150,6 +165,11 @@ function mostrarResumen(marca, modelo, cantCuotas) {
     alert(
         `Comprarás el reloj ${marca} ${modelo}.\nAbonarás un total de $${precioTotal} en ${cantCuotas} cuotas de $${cuota} con un interes total de ${Math.round((cantCuotas * interes) * 100) / 100}% sobre el valor original del reloj.`
     )
+}
+
+function capitalize(palabra) {
+    palabra = palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+    return palabra
 }
 
 main();
