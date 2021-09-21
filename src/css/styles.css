@@ -121,7 +121,7 @@ h4 {
       max-width: 100%;
       margin: 0 auto; }
   .reloj .info-secundaria {
-    background-color: #ced4da;
+    background-color: #343a40;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -131,7 +131,7 @@ h4 {
     transition: transform 300ms ease; }
     .reloj .info-secundaria p {
       text-align: center;
-      color: #212529; }
+      color: #ffffff; }
   .reloj .titulo {
     padding: 2rem; }
     .reloj .titulo p {
@@ -148,3 +148,11 @@ h4 {
     font-size: 3rem;
     margin: 0;
     font-family: "Open Sans", sans-serif; }
+
+footer .copyright {
+  margin: 10rem 0 5rem 0;
+  text-align: center; }
+  footer .copyright .link {
+    text-decoration: none;
+    font-weight: 700;
+    color: #FF9D5C; }
