@@ -19,6 +19,22 @@ const relojes = [
     ['Samsung', 'Galaxy Fit 2 1.1"', 5599, true, true, 'Samsung_GalaxyFit21.1']
 ];
 
+const frases = [
+    'Bienvenid@! Disfruta el paseo!',
+    'Hola! Espero que estés con ganas de darte un gustito!',
+    'Te doy la bienvenida a La Montre.',
+    'Espero que encuentres lo que buscas!',
+    '"Si miras el reloj, el reloj te mirará a ti." - Raúl Campoy Guillén',
+    'También hay relojes de sangre; la gente suele llamarles el corazón.',
+    '"El reloj no existe en las horas felices." - Ramón Gómez de la Serna',
+    '"Aún un reloj parado tiene razón dos veces al día." - Marie von Ebner-Eschenbach',
+    '"Un hombre con un reloj sabe la hora que es; uno con dos no está tan seguro." - Anónimo',
+    'Convierte tus sueños en realidad.',
+    '"Los días pueden ser iguales para un reloj, pero no para un hombre." - Marcel Proust',
+    '"Vivimos o morimos por el reloj, ese es todo el tiempo que tenemos." - Tom Hanks',
+    '“El tictac de los relojes parece un ratón que roe el tiempo.” - Alphonse Allais'
+]
+
 let interes = 1.2
 let relojesObj = []
 let precioTotal;
@@ -42,17 +58,18 @@ class Reloj {
 }
 
 function main() {
+    elegirSaludo();
     
     ordenarRelojes(0);
     
     agregarReloj();
-
+    
     mostrarRelojes();
     
     escucharCambioOrden();
-
+    
     /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
-
+    
     // let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`, relojes.length);
     
     // let { marca, modelo, precio, tipo, smart, source } = relojesObj[relojUsuario - 1];
@@ -60,14 +77,26 @@ function main() {
     // calcularCuotas(precio, cantCuotas);
 }
 
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function elegirSaludo() {
+    const saludoIndex = randomInteger(0, frases.length - 1);
+    const saludo = frases[saludoIndex];
+    const saludoH2 = document.getElementById('saludo');
+
+    saludoH2.innerHTML = saludo;
+}
+
 function agregarReloj() {
-
+    
     relojesObj = []
-
+    
     for (let reloj of relojes) {
-       let [ marca, modelo, precio, tipo, smart, source ] = reloj
-       let relojObj = new Reloj(marca, modelo, precio, tipo, smart, source);
-       relojesObj.push(relojObj);
+        let [ marca, modelo, precio, tipo, smart, source ] = reloj
+        let relojObj = new Reloj(marca, modelo, precio, tipo, smart, source);
+        relojesObj.push(relojObj);
     }
 }
 
