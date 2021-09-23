@@ -45,39 +45,46 @@ h4 {
   justify-content: space-between;
   align-items: center; }
   .header a {
+    display: block;
+    margin: 0 auto;
     text-align: center;
     text-decoration: none;
     color: #212529;
     transition: all 300ms ease; }
   .header a:hover {
     letter-spacing: .1rem; }
-  .header nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    min-width: 49rem;
-    text-align: center;
-    display: flex;
-    justify-content: space-around; }
-    .header nav ul li {
-      display: inline-block;
-      text-align: center; }
-      .header nav ul li a {
-        text-decoration: none;
-        color: #212529;
-        font-size: 2.4rem;
-        font-family: "Cinzel", serif;
-        transition: all 300ms ease; }
-      .header nav ul li:hover a {
-        letter-spacing: .3rem; }
+  .header .nav {
+    display: none; }
+    .header .nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      min-width: 49rem;
+      text-align: center;
+      display: flex;
+      justify-content: space-around; }
+      .header .nav ul li {
+        display: inline-block;
+        text-align: center; }
+        .header .nav ul li a {
+          text-decoration: none;
+          color: #212529;
+          font-size: 2.4rem;
+          font-family: "Cinzel", serif;
+          transition: all 300ms ease; }
+        .header .nav ul li:hover a {
+          letter-spacing: .3rem; }
+
+@media only screen and (min-width: 768px) {
+  .header a {
+    display: inline-block;
+    margin: 0; }
+  .header .nav {
+    display: block; } }
 
 /* HOME */
 .home-section {
   text-align: center; }
-
-.home-section__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
 
 .home-section__grid img {
   max-width: 100%; }
@@ -89,18 +96,50 @@ h4 {
 .saludo {
   font-family: "Cinzel", serif; }
 
+@media only screen and (min-width: 768px) {
+  .home-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; } }
+
 /* Titulo */
 .opciones-relojes {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
+  text-align: center;
+  margin-bottom: 5rem; }
+  .opciones-relojes .field .inputs {
+    width: 100%; }
+    .opciones-relojes .field .inputs label {
+      margin-bottom: 1rem; }
+    .opciones-relojes .field .inputs select {
+      width: 100%;
+      padding: .5rem;
+      margin-bottom: 1rem; }
+      .opciones-relojes .field .inputs select:last-of-type {
+        margin-bottom: 0; }
 
 .contenedor-relojes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  row-gap: 2rem;
   margin-bottom: 5rem; }
+
+@media only screen and (min-width: 768px) {
+  .opciones-relojes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .opciones-relojes .field {
+      display: flex;
+      align-items: center;
+      gap: 1rem; }
+      .opciones-relojes .field label {
+        width: fit-content; }
+      .opciones-relojes .field .inputs {
+        width: fit-content; }
+        .opciones-relojes .field .inputs select {
+          width: fit-content; }
+  .contenedor-relojes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    row-gap: 2rem;
+    margin-bottom: 5rem; } }
 
 .reloj {
   display: flex;
@@ -113,7 +152,8 @@ h4 {
   cursor: pointer;
   overflow: hidden;
   transition: all 300ms ease;
-  box-shadow: 0px 5px 8px -2px rgba(0, 0, 0, 0.35); }
+  box-shadow: 0px 5px 8px -2px rgba(0, 0, 0, 0.35);
+  margin-bottom: 2rem; }
   .reloj:hover {
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.35);
     transform: translateY(-3px); }
@@ -154,6 +194,10 @@ h4 {
     font-size: 3rem;
     margin: 0;
     font-family: "Open Sans", sans-serif; }
+
+@media only screen and (min-width: 768px) {
+  .reloj {
+    margin-bottom: 1rem; } }
 
 footer .copyright {
   margin: 10rem 0 5rem 0;

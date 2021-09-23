@@ -19,7 +19,7 @@
             <h1>La Montre</h1>
         </a>
         
-        <nav>
+        <nav class="nav">
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Smart</a></li>
@@ -31,8 +31,11 @@
 
     <section class="home-section">
         <div class="container">
-            <h2 class="saludo">Bienvenido, <span class="saludo" id="nombreUsuario"></span>!</h2>
+
+            <h2 class="saludo">Bienvenid@!</h2>
+
             <h3>Convierte tus sueños en realidad</h3>
+
             <div class="home-section__grid">
                 <img src="src/img/Home-watch.png" alt="Un reloj rolex de lujo">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia dolorum, sit quaerat magni laudantium numquam tenetur reiciendis voluptatum illum vitae culpa cumque animi provident aspernatur consectetur quis eaque cupiditate minima.
@@ -42,20 +45,28 @@
     </section>
     
     <main class="container">
+
         <div class="opciones-relojes">
+
             <h2>Elige tu reloj favorito!</h2>
+
             <div class="field">
+
                 <label for="orden">Ordenar por:</label>
-                <select name="orden" id="orden">
-                    <option value="0">Marca</option>
-                    <option value="2">Precio</option>
-                    <option value="3">Tipo</option>
-                    <option value="4">Smart o no</option>
-                </select>
-                <select name="orden" id="ordenAscDesc">
-                    <option value="menor">Menor a mayor</option>
-                    <option value="mayor">Mayor a menor</option>
-                </select>
+                
+                <div class="inputs">
+                    <select name="orden" id="orden">
+                        <option value="0">Marca</option>
+                        <option value="2">Precio</option>
+                        <option value="3">Tipo</option>
+                        <option value="4">Smart o no</option>
+                    </select>
+                    <select name="orden" id="ordenAscDesc">
+                        <option value="menor">Menor a mayor</option>
+                        <option value="mayor">Mayor a menor</option>
+                    </select>
+                </div>
+
             </div>
         </div>
 
