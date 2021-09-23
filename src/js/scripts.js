@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+    main();
+})
+
 const relojes = [
     ['Xiaomi', 'Smart Band 5', 2939, true, true, 'Xiaomi_SmartBand5'],
     ['Xiaomi', 'Smart Band 6', 4799, true, true, 'Xiaomi_SmartBand6'],
@@ -38,8 +42,6 @@ class Reloj {
 }
 
 function main() {
-
-    saludarUsuario();
     
     ordenarRelojes(0);
     
@@ -49,35 +51,13 @@ function main() {
     
     escucharCambioOrden();
 
-    nombre = mostrarAlerta('Hola, cómo te llamas?', true);
+    /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
 
-    /* Más adelante se obtendrán estos datos con un formulario o inputs. */
     // let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`, relojes.length);
     
     // let { marca, modelo, precio, tipo, smart, source } = relojesObj[relojUsuario - 1];
-    // mostrarInfoReloj(marca, modelo, precio, tipo, smart, source);
-
-    // let cantCuotasPrompt = 'En cuántas cuotas deseas pagarlo? (Máximo 24)'
-    // let cantCuotas = obtenerDatos(cantCuotasPrompt, 24);
     
     // calcularCuotas(precio, cantCuotas);
-
-    // mostrarResumen(marca, modelo, cantCuotas);
-}
-function saludarUsuario() {
-    // localStorage.removeItem('nombre')
-    // /* Seleccionar el <span> que contendrá el nombre*/
-    // let nombreUsuario = document.querySelector('#nombreUsuario');
-    // /* Verificar si ya está guardado su nombre */
-    // if (!localStorage.getItem('nombre')) {
-    //     /* Si no hay ningún nombre guardado, se lo preguntamos */
-    //     nombre = mostrarAlerta('Hola! Cómo te llamas?');
-    //     nombre = capitalize(nombre)
-    //     localStorage.setItem('nombre', nombre)
-    // }
-    // /* Pasamos el nombre al span#nombreUsuario */
-    // nombreUsuario.innerText = localStorage.getItem('nombre');
-    nombre = mostrarAlerta('Hola! Cómo te llamas?', true);
 }
 
 function agregarReloj() {
@@ -132,7 +112,6 @@ function ordenarRelojes(i, orden = 'menor') {
         } else {
             console.log('No se pudieron ordenar los elementos según el criterio establecido.');
         }
-
     })
 }
 
@@ -165,97 +144,40 @@ function mostrarRelojes() {
     }
 }
 
-function obtenerDatos(pregunta, limite) {
-    datosInvalidos = true
+// function obtenerDatos(pregunta, limite) {
 
-    while (datosInvalidos) {
-        respuesta = parseInt(prompt(pregunta));
+//     /* Voy a usar esta función para validar inputs. Por ahora no la uso */
+
+//     datosInvalidos = true
+
+//     while (datosInvalidos) {
+//         respuesta = parseInt(prompt(pregunta));
         
-        if (!isNaN(respuesta)) {
-            if (respuesta <= limite && respuesta > 0) {
-                datosInvalidos = false;
-            } else {
-                alert('Tu respuesta debe ser entre 1 y ' + limite);
-            }
-        } else {
-            alert('Tu respuesta debe ser un número entero, sin símbolos.');
-        }
-    }
-    return respuesta;
-}
+//         if (!isNaN(respuesta)) {
+//             if (respuesta <= limite && respuesta > 0) {
+//                 datosInvalidos = false;
+//             } else {
+//                 alert('Tu respuesta debe ser entre 1 y ' + limite);
+//             }
+//         } else {
+//             alert('Tu respuesta debe ser un número entero, sin símbolos.');
+//         }
+//     }
+//     return respuesta;
+// }
 
-function mostrarInfoReloj(marca, modelo, precio, tipo, smart, source) {
-    alert(`
-    El reloj ${marca} ${modelo}, es de tipo ${tipo ? 'digital' : 'analógico'} y ${smart ? 'es smart' : 'no es smart'}.
-    Su precio es de $${precio}.
-    `);
-}
+// function calcularCuotas(precio, cantCuotas) {
+//     //Calculo el precio total "precioTotal" es global.
+//     precioTotal = (precio / 100 * (cantCuotas * interes)) + precio
+//     precioTotal = Math.round(precioTotal * 100) / 100
+//     //Calculo el valor de cada cuota y la redondeo
+//     cuota = Math.round(precioTotal / cantCuotas * 100) / 100
+// }
 
-function calcularCuotas(precio, cantCuotas) {
-    //Calculo el precio total
-    precioTotal = (precio / 100 * (cantCuotas * interes)) + precio
-    precioTotal = Math.round(precioTotal * 100) / 100
-    //Calculo el valor de cada cuota y la redondeo
-    cuota = Math.round(precioTotal / cantCuotas * 100) / 100
-}
+// function capitalize(palabra) {
+//     /* Transforma la primer letra de un string en mayúscula
+//     y el resto en minúsculas.*/
 
-function mostrarResumen(marca, modelo, cantCuotas) {
-    //Muestro los resultados con alert.
-    alert(
-        `Comprarás el reloj ${marca} ${modelo}.\nAbonarás un total de $${precioTotal} en ${cantCuotas} cuotas de $${cuota} con un interes total de ${Math.round((cantCuotas * interes) * 100) / 100}% sobre el valor original del reloj.`
-    )
-}
-
-function capitalize(palabra) {
-    palabra = palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
-    return palabra
-}
-
-function mostrarAlerta(message, prompt = false) {
-    document.body.style.overflow = 'hidden';
-
-    //Creo el overlay que contendrá la alerta
-    const alerta = document.createElement('DIV');
-    alerta.classList.add('alerta');
-
-    //Creo el contenido de la alerta
-    const alertaOverlay = document.createElement('DIV');
-    alertaOverlay.classList.add('alerta__contenido');
-
-    //Defino algunos elementos para asignarles el valor después
-    const okButton = document.createElement('BUTTON');
-    let userAnswer = ''
-    okButton.innerHTML = 'Ok';
-
-    //Si prompt es false solo se muestra un <p> con un mensaje
-    if (!prompt) {
-        alertaOverlay.innerHTML = `<p>${message}</p>`
-        alertaOverlay.appendChild(okButton);
-    //Si prompt es True se muestra un input para pedir información.
-    } else {
-        let inputAlerta = document.createElement('INPUT');
-        let opciones = document.createElement('DIV');
-        opciones.classList.add('options');
-        let cancelButton = document.createElement('BUTTON');
-
-        alertaOverlay.innerHTML = `<label for="alerta">${message}</label>`
-        
-        alertaOverlay.appendChild(inputAlerta);
-        opciones.appendChild(okButton, cancelButton);
-        alertaOverlay.appendChild(opciones);
-
-        inputAlerta.addEventListener('change', (e) => {
-            userAnswer = e.target.value
-        });
-    }
-    alerta.appendChild(alertaOverlay);
-    
-    okButton.addEventListener('click', () => {
-        alerta.style.display = 'none';
-        document.body.style.overflow = 'visible';
-    });
-
-    return userAnswer
-}
-
-main();
+//     palabra = palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+//     return palabra
+// }
