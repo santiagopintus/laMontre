@@ -3,20 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const relojes = [
-    ['Xiaomi', 'Smart Band 5', 2939, true, true, 'Xiaomi_SmartBand5'],
-    ['Xiaomi', 'Smart Band 6', 4799, true, true, 'Xiaomi_SmartBand6'],
-    ['Xiaomi', 'Mi Watch Lite 1.4"', 7719, true, true, 'Xiaomi_miWatchLite1.4'],
-    ['Skmei', '9096', 3699, false, false, 'Skmei_9096'],
-    ['Skmei', '1251', 2499, true, false, 'Skmei_1251'],
-    ['Casio', 'A158wa', 4950, true, false, 'Casio_A158wa'],
-    ['Casio', 'Mq-24', 2980, false, false, 'Casio_Mq-24'],
-    ['Diesel', '6628', 4696.09, false, false, 'Diesel_6628'],
-    ['Diesel', '6630', 4586.75, false, false, 'Diesel_6630'],
-    ['Mistral', 'SMTM7', 12686.41, false, true, 'Mistral_SMTM7'],
-    ['Sweet', 'GpsPro', 12127, true, true, 'Sweet_GpsPro'],
-    ['Samsung', 'Galaxy Watch 4', 39999, true, true, 'samsung_galaxyWatch4'],
-    ['Amazfit', 'Fashion GTS 2 Mini 1.55"', 11399, true, true, 'Amazfit_FashionGTS2Mini1.55'],
-    ['Samsung', 'Galaxy Fit 2 1.1"', 5599, true, true, 'Samsung_GalaxyFit21.1']
+    //Marca,     Modelo,                     Precio,    Tipo,   Smart, nombre de imagen
+    ['Xiaomi',  'Smart Band 5',              2939,      true,   true, 'Xiaomi_SmartBand5'],
+    ['Xiaomi',  'Smart Band 6',              4799,      true,   true, 'Xiaomi_SmartBand6'],
+    ['Xiaomi',  'Mi Watch Lite 1.4"',        7719,      true,   true, 'Xiaomi_miWatchLite1.4'],
+    ['Skmei',   '9096',                      3699,      false,  false,'Skmei_9096'],
+    ['Skmei',   '1251',                      2499,      true,   false,'Skmei_1251'],
+    ['Casio',   'A158wa',                    4950,      true,   false,'Casio_A158wa'],
+    ['Casio',   'Mq-24',                     2980,      false,  false,'Casio_Mq-24'],
+    ['Casio',   'GG-1000-1A3',               66132,     false,  false,'Casio_GG-1000-1A3'],
+    ['Diesel',  '6628',                      4696.09,   false,  false,'Diesel_6628'],
+    ['Diesel',  '6630',                      4586.75,   false,  false,'Diesel_6630'],
+    ['Garmin', 'Instinct Tactical Coyote',   49995,    true, true, 'Garmin_InstinctTacticalCoyote'],
+    ['Garmin', 'Forerunner 55',              37999,     true,   true, 'Garmin_Forerunner55'],
+    ['Garmin', 'Venu SQ',                    38995,     true,   true, 'Garmin_VenuSQ'],
+    ['Huawei', 'Honor Band 5',               5499,      true,   true, 'Huawei_HonorBand5'],
+    ['Mistral', 'SMTM7',                     12686.41,  false,  true, 'Mistral_SMTM7'],
+    ['Sweet',   'GpsPro',                    12127,     true,   true, 'Sweet_GpsPro'],
+    ['Samsung', 'Galaxy Watch 4',            39999,     true,   true, 'samsung_galaxyWatch4'],
+    ['Amazfit', 'Fashion GTS 2 Mini 1.55"',  11399,     true,   true, 'Amazfit_FashionGTS2Mini1.55'],
+    ['Samsung', 'Galaxy Fit 2 1.1"',         5599,      true,   true, 'Samsung_GalaxyFit21.1']
 ];
 
 const frases = [
@@ -67,10 +73,10 @@ function main() {
     mostrarRelojes();
     
     escucharCambioOrden();
+
+    // escucharClickReloj();
     
     /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
-    
-    // let relojUsuario = obtenerDatos(`Elige un reloj de la consola (Entre 1 y ${relojes.length})`, relojes.length);
     
     // let { marca, modelo, precio, tipo, smart, source } = relojesObj[relojUsuario - 1];
     
@@ -150,19 +156,22 @@ function mostrarRelojes() {
     while (contenedorRelojes.firstChild) {
         contenedorRelojes.removeChild(contenedorRelojes.firstChild);
     }
-    
+    let i = 0
     for (const reloj of relojesObj) {
         let relojDiv = document.createElement('DIV');
         relojDiv.classList.add('reloj');
+        relojDiv.setAttribute('id', i);
         relojDiv.innerHTML = `
-                            <div class=titulo>
-                                <p>${reloj.marca} ${reloj.modelo}</p>
-                            </div>
                             <div class="img-container">
-                                <img class="reloj-img" src="${imagenesPath}${reloj.source}${formatoImg}">
+                                <img class="reloj-img" src="${imagenesPath}${reloj.source}${formatoImg}" alt="Reloj ${reloj.marca} ${reloj.modelo}">
                             </div>
-                            <div class="precio">
-                                <p>$${reloj.precio}</p>
+                            <div class="info-ppal">
+                                <div class=titulo>
+                                    <p>${reloj.marca} ${reloj.modelo}</p>
+                                </div>
+                                <div class="precio">
+                                    <p>$${reloj.precio}</p>
+                                </div>
                             </div>
                             <div class="info-secundaria">
                                 <p>Tipo: ${reloj.tipo ? 'Digital' : 'Analógico'}</p>
@@ -170,9 +179,55 @@ function mostrarRelojes() {
                             </div>
                             `;
         contenedorRelojes.appendChild(relojDiv);
+        i++;
     }
 }
 
+// function escucharClickReloj() {
+//     //Selecciono todos los relojes
+//     const relojes = document.querySelectorAll('.reloj');
+//     //Transformo la nodeList a Array
+//     relojesArray = Array.from(relojes);
+
+//     let idReloj;
+//     //Recorro el array y agrego un addEventListener a cada reloj para obtener su ID
+//     for (let reloj of relojesArray) {
+//         reloj.addEventListener('click', (e) => {
+//             //Para obtener el id del reloj en cualquier lugar donde clickeen ↓
+//             if (e.target.id == '') {
+//                 if (e.target.offsetParent.id == '') {
+//                     idReloj = e.path[2].id
+//                 } else {
+//                     idReloj = e.target.offsetParent.id
+//                 }
+//             } else {
+//                 idReloj = e.target.id
+//             }
+//             mostrarReloj(idReloj);
+//         })
+//     }
+// }
+
+// function mostrarReloj(idReloj) {
+//     //Selecciono el reloj del array de relojes en formato de Objeto.
+//     let reloj = relojesObj[parseInt(idReloj)];
+//     //Defino el contenedor de todo el resumen del reloj
+//     const overlayReloj = document.createElement('DIV');
+//     overlayReloj.classList.add('overlay-reloj');
+//     //Defino el contenido del resumen
+//     const relojContenido = document.createElement('DIV');
+//     relojContenido.classList.add('overlay-reloj__contenido');
+//     overlayReloj.appendChild(relojContenido);
+//     ({ marca, modelo, precio, tipo, smart, source } = reloj);
+//     relojContenido.innerHTML = `<div class="container">
+//                                     <img src="${imagenesPath}${source}${formatoImg}" alt="El reloj  seleccionado para comprar">
+
+//                                 </div>
+
+//     `
+    
+//     document.body.appendChild(overlayReloj);
+// }
 // function obtenerDatos(pregunta, limite) {
 
 //     /* Voy a usar esta función para validar inputs. Por ahora no la uso */
@@ -201,12 +256,4 @@ function mostrarRelojes() {
 //     precioTotal = Math.round(precioTotal * 100) / 100
 //     //Calculo el valor de cada cuota y la redondeo
 //     cuota = Math.round(precioTotal / cantCuotas * 100) / 100
-// }
-
-// function capitalize(palabra) {
-//     /* Transforma la primer letra de un string en mayúscula
-//     y el resto en minúsculas.*/
-
-//     palabra = palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
-//     return palabra
 // }
