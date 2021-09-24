@@ -41,18 +41,15 @@ h4 {
 /* Layout */
 /* Header */
 .header {
+  padding: 5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center; }
-  .header a {
+  .header .contenedor-logo {
     display: block;
-    margin: 0 auto;
-    text-align: center;
-    text-decoration: none;
-    color: #212529;
-    transition: all 300ms ease; }
-  .header a:hover {
-    letter-spacing: .1rem; }
+    margin: 0 auto; }
+    .header .contenedor-logo .logo {
+      width: 100%; }
   .header .nav {
     display: none; }
     .header .nav ul {
@@ -66,18 +63,26 @@ h4 {
       .header .nav ul li {
         display: inline-block;
         text-align: center; }
+        .header .nav ul li::after {
+          content: '';
+          width: 100%;
+          height: 0;
+          background-color: #212529;
+          display: block;
+          transition: height 300ms ease; }
         .header .nav ul li a {
           text-decoration: none;
           color: #212529;
           font-size: 2.4rem;
           font-family: "Cinzel", serif;
           transition: all 300ms ease; }
+        .header .nav ul li:hover::after {
+          height: 2px; }
         .header .nav ul li:hover a {
-          letter-spacing: .3rem; }
+          letter-spacing: .1rem; }
 
 @media only screen and (min-width: 768px) {
-  .header a {
-    display: inline-block;
+  .header .contenedor-logo {
     margin: 0; }
   .header .nav {
     display: block; } }
