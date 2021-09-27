@@ -245,7 +245,7 @@ h4 {
   text-align: center; }
 
 .info__container .imagen-reloj {
-  max-width: 100%; }
+  width: 100%; }
 
 .info__container .info-derecha {
   margin-top: 2rem; }
