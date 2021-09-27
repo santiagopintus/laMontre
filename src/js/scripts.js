@@ -74,7 +74,7 @@ function main() {
     
     escucharCambioOrden();
 
-    // escucharClickReloj();
+    escucharClickReloj();
     
     /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
     
@@ -183,72 +183,44 @@ function mostrarRelojes() {
     }
 }
 
-// function escucharClickReloj() {
-//     //Selecciono todos los relojes
-//     const relojes = document.querySelectorAll('.reloj');
-//     //Transformo la nodeList a Array
-//     relojesArray = Array.from(relojes);
+function escucharClickReloj() {
+    //Selecciono todos los relojes
+    const relojes = document.querySelectorAll('.reloj');
+    //Transformo la nodeList a Array
+    relojesArray = Array.from(relojes);
 
-//     let idReloj;
-//     //Recorro el array y agrego un addEventListener a cada reloj para obtener su ID
-//     for (let reloj of relojesArray) {
-//         reloj.addEventListener('click', (e) => {
-//             //Para obtener el id del reloj en cualquier lugar donde clickeen ↓
-//             if (e.target.id == '') {
-//                 if (e.target.offsetParent.id == '') {
-//                     idReloj = e.path[2].id
-//                 } else {
-//                     idReloj = e.target.offsetParent.id
-//                 }
-//             } else {
-//                 idReloj = e.target.id
-//             }
-//             mostrarReloj(idReloj);
-//         })
-//     }
-// }
+    let idReloj;
+    //Recorro el array y agrego un addEventListener a cada reloj para obtener su ID
+    for (let reloj of relojesArray) {
+        reloj.addEventListener('click', (e) => {
+            //Para obtener el id del reloj en cualquier lugar donde clickeen ↓
+            if (e.target.id == '') {
+                // Si el elemento no tiene ID busco el del padre
+                if (e.target.offsetParent.id == '') {
+                    //Si el padre no tiene busco en el abuelo
+                    idReloj = e.path[2].id
+                } else {
+                    idReloj = e.target.offsetParent.id
+                }
+            } else {
+                idReloj = e.target.id
+            }
+            mostrarReloj(idReloj);
+        })
+    }
+}
 
-// function mostrarReloj(idReloj) {
-//     //Selecciono el reloj del array de relojes en formato de Objeto.
-//     let reloj = relojesObj[parseInt(idReloj)];
-//     //Defino el contenedor de todo el resumen del reloj
-//     const overlayReloj = document.createElement('DIV');
-//     overlayReloj.classList.add('overlay-reloj');
-//     //Defino el contenido del resumen
-//     const relojContenido = document.createElement('DIV');
-//     relojContenido.classList.add('overlay-reloj__contenido');
-//     overlayReloj.appendChild(relojContenido);
-//     ({ marca, modelo, precio, tipo, smart, source } = reloj);
-//     relojContenido.innerHTML = `<div class="container">
-//                                     <img src="${imagenesPath}${source}${formatoImg}" alt="El reloj  seleccionado para comprar">
+function mostrarReloj(idReloj) {
+    //Selecciono el reloj del array de relojes en formato de Objeto.
+    let reloj = relojesObj[parseInt(idReloj)];
+    //Elimino el reloj guardado anteriormente.
+    localStorage.removeItem('reloj');
+    //Lo guardo en localStorage para obtenerlo con la otra página
+    localStorage.setItem('reloj', JSON.stringify(reloj));
 
-//                                 </div>
-
-//     `
-    
-//     document.body.appendChild(overlayReloj);
-// }
-// function obtenerDatos(pregunta, limite) {
-
-//     /* Voy a usar esta función para validar inputs. Por ahora no la uso */
-
-//     datosInvalidos = true
-
-//     while (datosInvalidos) {
-//         respuesta = parseInt(prompt(pregunta));
-        
-//         if (!isNaN(respuesta)) {
-//             if (respuesta <= limite && respuesta > 0) {
-//                 datosInvalidos = false;
-//             } else {
-//                 alert('Tu respuesta debe ser entre 1 y ' + limite);
-//             }
-//         } else {
-//             alert('Tu respuesta debe ser un número entero, sin símbolos.');
-//         }
-//     }
-//     return respuesta;
-// }
+    //redirijo al usuario
+    window.open('../pages/reloj.html');
+}
 
 // function calcularCuotas(precio, cantCuotas) {
 //     //Calculo el precio total "precioTotal" es global.

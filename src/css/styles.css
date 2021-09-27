@@ -38,6 +38,22 @@ h4 {
   max-width: 120rem;
   margin: 0 auto; }
 
+.btn {
+  display: block;
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease; }
+
+.btn-primary {
+  background-color: #212529;
+  color: #ffffff; }
+  .btn-primary:hover {
+    background-color: #31373d; }
+
 /* Layout */
 /* Header */
 .header {
@@ -69,7 +85,7 @@ h4 {
           height: 0;
           background-color: #212529;
           display: block;
-          transition: height 300ms ease; }
+          transition: height 100ms ease; }
         .header .nav ul li a {
           text-decoration: none;
           color: #212529;
@@ -224,17 +240,37 @@ h4 {
     .reloj .precio {
       font-size: 3rem; } }
 
-.overlay-reloj {
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6); }
-  .overlay-reloj .overlay-reloj__contenido {
-    background-color: #e9ecef;
-    display: block;
-    max-width: 90%;
-    height: 80vh;
-    margin: 10vh auto 0 auto; }
+#tituloReloj {
+  font-size: 5.5vw;
+  text-align: center; }
+
+.info__container .imagen-reloj {
+  max-width: 100%; }
+
+.info__container .info-derecha {
+  margin-top: 2rem; }
+  .info__container .info-derecha .info-lista {
+    margin-top: 0;
+    padding: 0;
+    list-style: none; }
+    .info__container .info-derecha .info-lista li {
+      font-weight: bold; }
+      .info__container .info-derecha .info-lista li span {
+        font-weight: 400; }
+  .info__container .info-derecha .precio-reloj {
+    display: flex;
+    justify-content: space-between; }
+
+@media only screen and (min-width: 768px) {
+  #tituloReloj {
+    font-size: 4rem;
+    text-align: center; }
+  .info__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem; }
+    .info__container .info-derecha {
+      margin-top: 0; } }
 
 footer .copyright {
   margin: 10rem 0 5rem 0;
