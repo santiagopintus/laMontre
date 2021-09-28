@@ -261,6 +261,25 @@ h4 {
     display: flex;
     justify-content: space-between; }
 
+.imagen-contenedor {
+  position: fixed;
+  inset: 0;
+  display: none; }
+  .imagen-contenedor.mostrar {
+    display: block; }
+  .imagen-contenedor .imagen-overlay {
+    display: block;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); }
+  .imagen-contenedor .imagen-grande {
+    position: absolute;
+    z-index: 111;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%); }
+
 @media only screen and (min-width: 768px) {
   #tituloReloj {
     font-size: 4rem;
