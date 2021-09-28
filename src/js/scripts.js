@@ -219,7 +219,7 @@ function mostrarReloj(idReloj) {
     localStorage.setItem('reloj', JSON.stringify(reloj));
 
     //redirijo al usuario
-    window.open('../pages/reloj.html');
+    window.open('pages/reloj.html');
 }
 
 // function calcularCuotas(precio, cantCuotas) {
