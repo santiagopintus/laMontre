@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../src/img/favicon.svg" type="image/x-icon">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <!-- Título -->
+    <title>Home - La Montre</title>
+</head>
+<body>
+    <header class="header container">
+        <a href="../index.html" class="contenedor-logo">
+            <img class="logo" src="../src/img/logo.svg" alt="Logo de La Montre">
+        </a>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Smart</a></li>
+                <li><a href="#">Classic</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="mainReloj">
+        
+        <h2 id="tituloReloj"></h2>
+        <div class="info__container container">
+            <img id="imagenReloj" class="imagen-reloj">
+            <div class="info-derecha">
+                <ul class="info-lista">
+                    <li>Marca: <span id="marcaReloj"></span></li>
+                    <li>Modelo: <span id="modeloReloj"></span></li>
+                    <li>Tipo: <span id="tipoReloj"></span></li>
+                    <li>Es smart: <span id="smartONo"></span></li>
+                </ul>
+                <hr>
+                <div class="precio-reloj">
+                    <h3>Precio:</h3>
+                    <h3 id="precioReloj"></h3>
+                </div>
+                <button class="btn btn-primary">Agregar al carrito</button>
+                <button class="btn btn-primary">Comprar ahora</button>
+            </div>
+        </div>
+    
+    </main>
+
+    <footer class="container">
+        <p class="copyright">La Montre&trade; - Diseñado y desarrollado por <a href="https://github.com/santiagopintus" target="_blank" class="link">Santiago Pintus</a> - Todos los derechos reservados &copy;</p>
+    </footer>
+
+    <!-- JQUERY
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- Mis scripts -->
+    <script src="../src/js/resumen-reloj.js"></script>
+</body>
+</html>
