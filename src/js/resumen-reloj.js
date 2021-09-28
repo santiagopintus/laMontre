@@ -52,17 +52,7 @@ function crearHTML() {
 }
 
 function crearImagenGrande() {
-    //Defino el contenedor de la imagen y el overlay y sus atributos
-    const contenedorImagen = document.createElement('DIV');
-    contenedorImagen.classList.add('imagen-contenedor');
-
-    //Defino el overlay y sus atributos
-    const overlayImagen = document.createElement('DIV');
-    overlayImagen.classList.add('imagen-overlay');
-
-    //Defino la imagen y sus atributos
-    const imagenGrande = document.createElement('IMG');
-    imagenGrande.classList.add('imagen-grande');
+    const imagenGrande = document.querySelector('.imagen-grande');
     imagenGrande.src = `${imagenesPath}${source}${formatoImg}`;
     imagenGrande.alt = `Imagen ampliada del reloj ${marca} ${modelo}`;
 
@@ -72,18 +62,14 @@ function crearImagenGrande() {
     } else {
         imagenGrande.style.height = '95%';
     }
-    //Defino la cruz para cerrar
-    const botonCerrar = document.createElement('DIV');
-    overlayImagen.appendChild(botonCerrar);
-    //Agrego los elementos a sus padres
-    contenedorImagen.appendChild(overlayImagen);
-    contenedorImagen.appendChild(imagenGrande);
-    document.getElementById('mainReloj').appendChild(contenedorImagen);
+
     //Cuando clickeo en la imagen pequeña llamo la función que la muestra
-    mostrarImagen(contenedorImagen, overlayImagen);
+    mostrarImagen();
 }
 
-function mostrarImagen(contenedorImagen, overlayImagen) {
+function mostrarImagen() {
+    const contenedorImagen = document.querySelector('.imagen-contenedor');
+    const overlayImagen = document.querySelector('.imagen-overlay');
     imagenE.addEventListener('click', () => {
         document.body.style.overflow = 'hidden';
         contenedorImagen.classList.add('mostrar');
