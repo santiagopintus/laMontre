@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function () {
     main();
-})
+});
 
 const relojes = [
     //Marca,     Modelo,                     Precio,    Tipo,   Smart, nombre de imagen
@@ -73,12 +73,8 @@ function main() {
     mostrarRelojes();
     
     escucharCambioOrden();
-
-    escucharClickReloj();
     
     /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
-    
-    // let { marca, modelo, precio, tipo, smart, source } = relojesObj[relojUsuario - 1];
     
     // calcularCuotas(precio, cantCuotas);
 }
@@ -88,6 +84,7 @@ function randomInteger(min, max) {
 }
 
 function elegirSaludo() {
+    //Elige un saludo aleatorio del arreglo de saludos y lo pasa al DOM
     const saludoIndex = randomInteger(0, frases.length - 1);
     const saludo = frases[saludoIndex];
     const saludoH2 = document.getElementById('saludo');
@@ -96,9 +93,9 @@ function elegirSaludo() {
 }
 
 function agregarReloj() {
-    
-    relojesObj = []
-    
+    /* Recorre el array de relojes y va creando un objeto por cada uno,
+    Luego lo agrega al arreglo relojObj */
+    relojesObj = [] //Vacío el array para volver a llenarlo.
     for (let reloj of relojes) {
         let [ marca, modelo, precio, tipo, smart, source ] = reloj
         let relojObj = new Reloj(marca, modelo, precio, tipo, smart, source);
@@ -107,6 +104,8 @@ function agregarReloj() {
 }
 
 function escucharCambioOrden() {
+    /*Cuando hay un cambio en el select de orden, se ordenan los relojes,
+    se vuelven a agregar al array relojesObj y se muestran*/
     const ordenCriterio = document.getElementById('orden');
     const ordenAscDesc = document.getElementById('ordenAscDesc');
 
@@ -151,6 +150,8 @@ function ordenarRelojes(i, orden = 'menor') {
 }
 
 function mostrarRelojes() {
+    /* Primero vacío el HTML de relojes, luego recorro el array relojesObj
+    y por cada reloj creo una card en el DOM*/
     const contenedorRelojes = document.getElementById('contenedorRelojes');
     
     while (contenedorRelojes.firstChild) {
@@ -181,9 +182,15 @@ function mostrarRelojes() {
         contenedorRelojes.appendChild(relojDiv);
         i++;
     }
+    /* Después de mostrarlos escucho por un click
+    (Para que cada vez que se ordenen sean clickeables)*/
+    escucharClickReloj();
 }
 
 function escucharClickReloj() {
+    /* Escucha el click en un reloj, obtiene el id del reloj y muestra el reloj
+    llamando a la función mostrarReloj(idReloj) */
+    
     //Selecciono todos los relojes
     const relojes = document.querySelectorAll('.reloj');
     //Transformo la nodeList a Array
@@ -210,7 +217,7 @@ function escucharClickReloj() {
     }
 }
 
-function mostrarReloj(idReloj) {
+function mostrarReloj(idReloj) {    
     //Selecciono el reloj del array de relojes en formato de Objeto.
     let reloj = relojesObj[parseInt(idReloj)];
     //Elimino el reloj guardado anteriormente.
@@ -219,7 +226,7 @@ function mostrarReloj(idReloj) {
     localStorage.setItem('reloj', JSON.stringify(reloj));
 
     //redirijo al usuario
-    window.open('pages/reloj.html');
+    window.location.href = 'pages/reloj.html';
 }
 
 // function calcularCuotas(precio, cantCuotas) {

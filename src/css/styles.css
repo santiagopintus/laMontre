@@ -7,7 +7,7 @@ html {
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Noto Serif", serif; }
 
 html {
   font-size: 62.5%; }
@@ -17,7 +17,7 @@ body {
   font-size: 1.6rem; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Cinzel", serif;
+  font-family: "Noto Serif", serif;
   font-weight: 400; }
 
 h1 {
@@ -31,6 +31,10 @@ h3 {
 
 h4 {
   font-size: 2.8rem; }
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 2.2rem; } }
 
 /* Utilidades */
 .container {
@@ -65,7 +69,8 @@ h4 {
     display: block;
     margin: 0 auto; }
     .header .contenedor-logo .logo {
-      width: 100%; }
+      width: 100%;
+      max-width: 40rem; }
   .header .nav {
     display: none; }
     .header .nav ul {
@@ -81,19 +86,20 @@ h4 {
         text-align: center; }
         .header .nav ul li::after {
           content: '';
-          width: 100%;
-          height: 0;
+          width: 0;
+          height: 2px;
           background-color: #212529;
           display: block;
-          transition: height 100ms ease; }
+          transform-origin: right;
+          transition: width 500ms ease; }
         .header .nav ul li a {
           text-decoration: none;
           color: #212529;
           font-size: 2.4rem;
-          font-family: "Cinzel", serif;
+          font-family: "Noto Serif", serif;
           transition: all 300ms ease; }
         .header .nav ul li:hover::after {
-          height: 2px; }
+          width: 100%; }
         .header .nav ul li:hover a {
           letter-spacing: .1rem; }
 
@@ -115,7 +121,7 @@ h4 {
   letter-spacing: .5px; }
 
 .saludo {
-  font-family: "Cinzel", serif;
+  font-family: "Noto Serif", serif;
   font-size: 1.8rem; }
 
 @media only screen and (min-width: 768px) {
@@ -226,7 +232,7 @@ h4 {
     padding: 0 0 1rem 0;
     font-size: 1.8rem;
     margin: 0;
-    font-family: "Open Sans", sans-serif; }
+    font-family: "Noto Serif", serif; }
     .reloj .precio p {
       margin: 0; }
 
@@ -245,7 +251,8 @@ h4 {
   text-align: center; }
 
 .info__container .imagen-reloj {
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
 
 .info__container .info-derecha {
   margin-top: 2rem; }
@@ -254,19 +261,28 @@ h4 {
     padding: 0;
     list-style: none; }
     .info__container .info-derecha .info-lista li {
-      font-weight: bold; }
+      font-weight: bold;
+      margin-bottom: 2rem; }
       .info__container .info-derecha .info-lista li span {
         font-weight: 400; }
-  .info__container .info-derecha .precio-reloj {
+  .info__container .info-derecha .precio-reloj, .info__container .info-derecha .envio-reloj {
     display: flex;
     justify-content: space-between; }
+  .info__container .info-derecha .precio-reloj h3 {
+    margin-bottom: 0; }
+  .info__container .info-derecha .envio-reloj h4 {
+    margin-top: 0;
+    font-size: 2.1rem; }
 
+/* La imagen del reloj cuando se agranda */
 .imagen-contenedor {
   position: fixed;
   inset: 0;
-  display: none; }
+  opacity: 0;
+  display: none;
+  transition: opacity 200ms ease; }
   .imagen-contenedor.mostrar {
-    display: block; }
+    opacity: 1; }
   .imagen-contenedor .imagen-overlay {
     display: block;
     inset: 0;
@@ -298,3 +314,10 @@ footer .copyright {
     text-decoration: none;
     font-weight: 700;
     color: #FF9D5C; }
+
+.contenedor-404 {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center; }
+  .contenedor-404 h2, .contenedor-404 img {
+    margin-bottom: 5rem; }

@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../src/img/favicon.svg" type="image/x-icon">
     <!-- Estilos -->
@@ -24,16 +24,18 @@
         <nav class="nav">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Classic</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="../404.html">Smart</a></li>
+                <li><a href="../404.html">Classic</a></li>
+                <li><a href="../404.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="mainReloj">
         
+        <!-- Estos datos se completan con JS -->
         <h2 id="tituloReloj"></h2>
+
         <div class="info__container container">
             <img id="imagenReloj" class="imagen-reloj">
             <div class="info-derecha">
@@ -47,6 +49,10 @@
                 <div class="precio-reloj">
                     <h3>Precio:</h3>
                     <h3 id="precioReloj"></h3>
+                </div>
+                <div class="envio-reloj">
+                    <h4>Envio:</h4>
+                    <h4 id="envioReloj"></h4>
                 </div>
                 <button class="btn btn-primary">Agregar al carrito</button>
                 <button class="btn btn-primary">Comprar ahora</button>

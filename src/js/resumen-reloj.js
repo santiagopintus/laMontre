@@ -8,6 +8,7 @@ let precio = ''
 let tipo = ''
 let smart = ''
 let source = ''
+let envio = ''
 //Elementos HTML globales para ser accedidos en cualquier parte
 const tituloE = document.getElementById('tituloReloj');
 const marcaE = document.getElementById('marcaReloj')
@@ -16,6 +17,7 @@ const imagenE = document.getElementById('imagenReloj');
 const tipoE = document.getElementById('tipoReloj');
 const smartE = document.getElementById('smartONo');
 const precioE = document.getElementById('precioReloj');
+const envioE = document.getElementById('envioReloj');
 //La ruta a las imágenes de los relojes
 const imagenesPath = '../src/img/relojes/';
 //Este formato funciona si todas las imagenes tienen el mismo formato.
@@ -35,6 +37,7 @@ function obtenerReloj() {
     /* Parseando el objeto JSON a objecto */
     reloj = JSON.parse(reloj);
     ({ marca, modelo, precio, tipo, smart, source } = reloj)
+    envio = Math.round(precio * 0.03);
 }
 
 function crearHTML() {
@@ -47,6 +50,7 @@ function crearHTML() {
     tipoE.innerHTML = tipo ? 'Digital' : 'Analógico';
     smartE.innerHTML = smart ? 'Si' : 'No';
     precioE.innerHTML = `$${precio}`;
+    envioE.innerHTML = `$${envio}`;
     /* Cambio el titulo de la pestaña */
     document.title = `${marca} ${modelo} - La Montre`;
 }
@@ -72,10 +76,16 @@ function mostrarImagen() {
     const overlayImagen = document.querySelector('.imagen-overlay');
     imagenE.addEventListener('click', () => {
         document.body.style.overflow = 'hidden';
-        contenedorImagen.classList.add('mostrar');
+        contenedorImagen.style.display = 'block';
+        setTimeout(() => {
+            contenedorImagen.classList.add('mostrar');
+        }, 100);
     });
     overlayImagen.addEventListener('click', () => {
         document.body.style.overflow = 'visible';
         contenedorImagen.classList.remove('mostrar');
+        setTimeout(() => {
+            contenedorImagen.style.display = 'none';
+        }, 400);
     })
 }
