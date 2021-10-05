@@ -22,8 +22,8 @@ function dragMoveListener (event) {
   target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
 
   // Actualizamos la posición de en los atributos
-  target.setAttribute('data-x', x)
-  target.setAttribute('data-y', y)
+  target.setAttribute('data-x', x);
+  target.setAttribute('data-y', y);
 }
 
 // this function is used later in the resizing and gesture demos

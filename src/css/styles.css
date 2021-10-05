@@ -297,7 +297,9 @@ h4 {
     transform: translateX(-50%);
     touch-action: none; }
   .imagen-contenedor .imagen-grande {
-    touch-action: none; }
+    touch-action: none;
+    display: block;
+    margin: 0 auto; }
 
 @media only screen and (min-width: 768px) {
   #tituloReloj {

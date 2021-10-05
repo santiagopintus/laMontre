@@ -59,13 +59,14 @@ function crearHTML() {
 function crearImagenGrande() {
     $('.imagen-grande').attr('src', `${imagenesPath}${source}${formatoImg}`);
     $('.imagen-grande').attr('alt', `Imagen ampliada del reloj ${marca} ${modelo}`);
-
     //Para que la imagen tenga el 95% del lado más chico.
     if (window.innerHeight > window.innerWidth) {
         $('.imagen-grande').css({
-            width: '95%',
-            marginTop: `${window.innerHeight / 4}px`
+            width: '95%'
         });
+        $('.contenedor-arrastrable').css({
+            marginTop: `${window.innerHeight / 4}px`
+        })
     } else {
         $('.imagen-grande').css({ height: '95%' });
     }
