@@ -88,9 +88,7 @@ function elegirSaludo() {
     //Elige un saludo aleatorio del arreglo de saludos y lo pasa al DOM
     const saludoIndex = randomInteger(0, frases.length - 1);
     const saludo = frases[saludoIndex];
-    const saludoH2 = document.getElementById('saludo');
-
-    saludoH2.innerHTML = saludo;
+    $('#saludo').html(saludo);
 }
 
 function agregarReloj() {
@@ -107,17 +105,15 @@ function agregarReloj() {
 function escucharCambioOrden() {
     /*Cuando hay un cambio en el select de orden, se ordenan los relojes,
     se vuelven a agregar al array relojesObj y se muestran*/
-    const ordenCriterio = document.getElementById('orden');
-    const ordenAscDesc = document.getElementById('ordenAscDesc');
 
-    ordenCriterio.addEventListener('change', (e) => {
-        ordenarRelojes(ordenCriterio.value, ordenAscDesc.value);
+    $('#orden').on('change', (e) => {
+        ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
         agregarReloj()
         mostrarRelojes();
     });
 
-    ordenAscDesc.addEventListener('change', (e) => {
-        ordenarRelojes(ordenCriterio.value, ordenAscDesc.value);
+    $('#ordenAscDesc').on('change', (e) => {
+        ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
         agregarReloj()
         mostrarRelojes();
     });
@@ -144,8 +140,6 @@ function ordenarRelojes(i, orden = 'menor') {
             return (a[i] === b[i]) ? 0 : a[i]? -1 : 1;
         } else if (typeof a[i] === 'boolean') {
             return (a[i] === b[i]) ? 0 : a[i]? 1 : -1;
-        } else {
-            console.log('No se pudieron ordenar los elementos según el criterio establecido.');
         }
     })
 }
@@ -153,21 +147,21 @@ function ordenarRelojes(i, orden = 'menor') {
 function mostrarRelojes() {
     /* Primero vacío el HTML de relojes, luego recorro el array relojesObj
     y por cada reloj creo una card en el DOM*/
-    const contenedorRelojes = document.getElementById('contenedorRelojes');
     
-    while (contenedorRelojes.firstChild) {
-        contenedorRelojes.removeChild(contenedorRelojes.firstChild);
+    if ($('#contenedorRelojes .reloj:first-child')) {
+        $('#contenedorRelojes').empty();
     }
+
     let i = 0
     for (const reloj of relojesObj) {
         let relojDiv = document.createElement('DIV');
-        relojDiv.classList.add('reloj');
+        $(relojDiv).addClass('reloj');
         //Para seleccionar cada reloj
-        relojDiv.setAttribute('id', i);
+        $(relojDiv).attr('id', i);
         //Para animar en scroll
-        relojDiv.setAttribute("data-aos", "flip-up");
-        relojDiv.innerHTML = `
-                            <div class="img-container">
+        $(relojDiv).attr("data-aos", "flip-up");
+        $(relojDiv).html(
+                            `<div class="img-container">
                                 <img class="reloj-img" src="${imagenesPath}${reloj.source}${formatoImg}" alt="Reloj ${reloj.marca} ${reloj.modelo}">
                             </div>
                             <div class="info-ppal">
@@ -182,8 +176,9 @@ function mostrarRelojes() {
                                 <p>Tipo: ${reloj.tipo ? 'Digital' : 'Analógico'}</p>
                                 <p>Es smart: ${reloj.smart ? 'Si' : 'No'}</p>
                             </div>
-                            `;
-        contenedorRelojes.appendChild(relojDiv);
+                            `
+        )
+        $('#contenedorRelojes').append(relojDiv);
         i++;
     }
     /* Después de mostrarlos escucho por un click
@@ -195,15 +190,14 @@ function escucharClickReloj() {
     /* Escucha el click en un reloj, obtiene el id del reloj y muestra el reloj
     llamando a la función mostrarReloj(idReloj) */
     
-    //Selecciono todos los relojes
-    const relojes = document.querySelectorAll('.reloj');
+    //Selecciono todos los relojes y
     //Transformo la nodeList a Array
-    relojesArray = Array.from(relojes);
+    relojesArray = Array.from($('.reloj'));
 
     let idReloj;
     //Recorro el array y agrego un addEventListener a cada reloj para obtener su ID
     for (let reloj of relojesArray) {
-        reloj.addEventListener('click', (e) => {
+        $(reloj).on('click', (e) => {
             //Para obtener el id del reloj en cualquier lugar donde clickeen ↓
             if (e.target.id == '') {
                 // Si el elemento no tiene ID busco el del padre
