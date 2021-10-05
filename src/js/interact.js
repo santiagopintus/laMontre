@@ -3,12 +3,7 @@
   // import 'https://cdn.interactjs.io/v1.9.20/modifiers/index.js';
 import interact from 'https://cdn.interactjs.io/v1.9.20/interactjs/index.js';
 
-//Le agrego la clase zoom cuando hago doble click en el elemento .tap-target
-// interact('.tap-target')
-//   .on('doubletap', (event) => {
-//     event.currentTarget.classList.toggle('zoom');
-//   });
-
+/* Esto lo saqué de la librería interact.js */
 
 /* AGRANDAR LA IMAGEN CON GESTOS TÁCTILES */
 
@@ -25,11 +20,6 @@ function dragMoveListener (event) {
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
 }
-
-// this function is used later in the resizing and gesture demos
-window.dragMoveListener = dragMoveListener
-
-
 
 var angleScale = {
   angle: 0,
@@ -49,14 +39,12 @@ interact(gestureArea)
         scaleElement.classList.remove('reset')
       },
       move (event) {
-        // document.body.appendChild(new Text(event.scale))
         var currentAngle = event.angle + angleScale.angle
         var currentScale = event.scale * angleScale.scale
 
         scaleElement.style.transform =
           'rotate(' + currentAngle + 'deg)' + 'scale(' + currentScale + ')'
-
-        // uses the dragMoveListener from the draggable demo above
+        
         dragMoveListener(event)
       },
       end (event) {
