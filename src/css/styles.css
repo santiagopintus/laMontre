@@ -289,12 +289,15 @@ h4 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); }
-  .imagen-contenedor .imagen-grande {
+  .imagen-contenedor .contenedor-arrastrable {
     position: absolute;
     z-index: 111;
     top: 2rem;
     left: 50%;
-    transform: translateX(-50%); }
+    transform: translateX(-50%);
+    touch-action: none; }
+  .imagen-contenedor .imagen-grande {
+    touch-action: none; }
 
 @media only screen and (min-width: 768px) {
   #tituloReloj {

@@ -62,9 +62,12 @@ function crearImagenGrande() {
 
     //Para que la imagen tenga el 95% del lado más chico.
     if (window.innerHeight > window.innerWidth) {
-        $('.imagen-grande').css({width: '95%'})
+        $('.imagen-grande').css({
+            width: '95%',
+            marginTop: `${window.innerHeight / 4}px`
+        });
     } else {
-        $('.imagen-grande').css({height: '95%'})
+        $('.imagen-grande').css({ height: '95%' });
     }
 
     //Cuando clickeo en la imagen pequeña llamo la función que la muestra
