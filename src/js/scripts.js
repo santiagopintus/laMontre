@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    AOS.init();
     main();
 });
 
@@ -161,7 +162,10 @@ function mostrarRelojes() {
     for (const reloj of relojesObj) {
         let relojDiv = document.createElement('DIV');
         relojDiv.classList.add('reloj');
+        //Para seleccionar cada reloj
         relojDiv.setAttribute('id', i);
+        //Para animar en scroll
+        relojDiv.setAttribute("data-aos", "flip-up");
         relojDiv.innerHTML = `
                             <div class="img-container">
                                 <img class="reloj-img" src="${imagenesPath}${reloj.source}${formatoImg}" alt="Reloj ${reloj.marca} ${reloj.modelo}">
