@@ -63,8 +63,8 @@ interact(gestureArea)
         angleScale.angle = angleScale.angle + event.angle
         angleScale.scale = angleScale.scale * event.scale
 
-        resetTimeout = setTimeout(reset, 1000)
-        scaleElement.classList.add('reset')
+        resetTimeout = setTimeout(reset, 5000);
+        scaleElement.classList.add('reset');
       }
     }
   })

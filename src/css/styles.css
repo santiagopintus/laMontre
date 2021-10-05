@@ -300,6 +300,8 @@ h4 {
     touch-action: none;
     display: block;
     margin: 0 auto; }
+    .imagen-contenedor .imagen-grande.reset {
+      transition: transform 0.3s ease-in-out; }
 
 @media only screen and (min-width: 768px) {
   #tituloReloj {
