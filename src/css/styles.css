@@ -293,8 +293,7 @@ h4 {
     position: absolute;
     z-index: 111;
     top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     touch-action: none; }
   .imagen-contenedor .imagen-grande {
     touch-action: none;
@@ -312,7 +311,9 @@ h4 {
     grid-template-columns: 1fr 1fr;
     gap: 2rem; }
     .info__container .info-derecha {
-      margin-top: 0; } }
+      margin-top: 0; }
+  .imagen-contenedor .contenedor-arrastrable {
+    left: 25%; } }
 
 footer .copyright {
   margin: 10rem 0 5rem 0;

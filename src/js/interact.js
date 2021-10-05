@@ -69,7 +69,8 @@ interact(gestureArea)
     }
   })
   .draggable({
-    listeners: { move: dragMoveListener }
+    listeners: { move: dragMoveListener },
+    inertia: true,
   })
 
 function reset () {
