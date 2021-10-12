@@ -72,8 +72,6 @@ function main() {
     agregarReloj();
     
     mostrarRelojes();
-
-    menuResponsive();
     
     escucharCambioOrden();
     
@@ -102,22 +100,6 @@ function agregarReloj() {
         let relojObj = new Reloj(marca, modelo, precio, tipo, smart, source);
         relojesObj.push(relojObj);
     }
-}
-
-function menuResponsive() {
-    $('.navbar-toggler').on('click', () => {
-        $('.hamburguesa').toggleClass('abierto');
-        $('.nav ul').slideToggle();
-    })
-    
-    $(window).resize(function () { 
-        if (window.innerWidth >= 768) {
-            $('.nav ul').show()
-        } else {
-            $('.hamburguesa').removeClass('abierto');
-            $('.nav ul').slideUp();
-        }
-    });
 }
 
 function escucharCambioOrden() {

@@ -15,17 +15,29 @@
     <!-- Título -->
     <title>Home - La Montre</title>
 </head>
-<body>
-    <header class="header container">
+<body class="container">
+    
+    <header class="header">
         <a href="../index.html" class="contenedor-logo">
             <img class="logo" src="../src/img/logo.svg" alt="Logo de La Montre">
         </a>
         
         <nav class="nav">
-            <ul>
+            <div class="navbar-toggler">
+                <!-- Menu Hamburguesa -->
+                <span class="hamburguesa">
+                    <!-- 3 barras que dsp hacen la cruz para cerrar -->
+                    <div class="barra-1"></div>
+                    <div class="barra-2"></div>
+                    <div class="barra-3"></div>
+                </span>
+            </div>
+
+            <ul id="menuItems">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../404.html">Smart</a></li>
                 <li><a href="../404.html">Classic</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
                 <li><a href="../404.html">Contacto</a></li>
             </ul>
         </nav>
@@ -54,8 +66,8 @@
                     <h4>Envio:</h4>
                     <h4 id="envioReloj"></h4>
                 </div>
-                <button class="btn btn-primary">Agregar al carrito</button>
-                <button class="btn btn-primary">Comprar ahora</button>
+                <button id="agregarAlCarrito" class="btn btn-primary">Agregar al carrito<span id="numeroCarrito"></span></button>
+                <button id="comprar" class="btn btn-primary">Comprar ahora</button>
             </div>
         </div>
         
@@ -78,6 +90,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Interact JS -->
     <script type="module" src="../src/js/interact.js"></script>
+    <!-- Menu responsive -->
+    <script src="../src/js/menu-responsive.js"></script>
     <!-- Mis scripts -->
     <script src="../src/js/resumen-reloj.js"></script>
 </body>

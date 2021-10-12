@@ -13,15 +13,15 @@
     <!-- AOS styles -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Estilos -->
-    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
     <!-- Título -->
     <title>Home - La Montre</title>
 </head>
 <body class="container">
-    
+
     <header class="header">
-        <a href="index.html" class="contenedor-logo">
-            <img class="logo" src="src/img/logo.svg" alt="Logo de La Montre">
+        <a href="../index.html" class="contenedor-logo">
+            <img class="logo" src="../src/img/logo.svg" alt="Logo de La Montre">
         </a>
         
         <nav class="nav">
@@ -34,21 +34,31 @@
                     <div class="barra-3"></div>
                 </span>
             </div>
+
             <ul id="menuItems">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="404.html">Smart</a></li>
-                <li><a href="404.html">Classic</a></li>
-                <li><a href="pages/carrito.html">Carrito</a></li>
-                <li><a href="404.html">Contacto</a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../404.html">Smart</a></li>
+                <li><a href="../404.html">Classic</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="../404.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
+    
+    <main class="container">
+    
+        <h3 class="titulo-carrito">Carrito <span id="numeroCarrito"></span></h3>
 
-    <section class="contenedor-404">
-        <h2>Creo que te perdiste en el tiempo! :O</h2>
-        <img src="src/img/404.svg" alt="Imagen de error 404">
-        <p>No pudimos encontrar la página, o está en desarrollo...</p>
-    </section>
+        <p class="empty-cart-mje">No hay relojes en el carrito, por favor agregue alguno.</p>
+
+        <div class="contenedor-carrito">
+            <!-- Llenado dinámicamente con JS -->
+        </div>
+
+        <button id="vaciar" class="btn btn-primary">Vaciar carrito</button>
+        <button id="comprar" class="btn btn-primary">Ir a comprar</button>
+    </main> 
+       
 
     <footer class="container">
         <p class="copyright">La Montre&trade; - Diseñado y desarrollado por <a href="https://github.com/santiagopintus" target="_blank" class="link">Santiago Pintus</a> - Todos los derechos reservados &copy;</p>
@@ -59,8 +69,8 @@
     <!-- AOS Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Menu responsive -->
-    <script src="src/js/menu-responsive.js"></script>
-    <!-- Mis scripts -->
-    <script src="src/js/scripts.js"></script>
+    <script src="../src/js/menu-responsive.js"></script>
+    <!-- Carrito scripts -->
+    <script src="../src/js/carrito.js"></script>
 </body>
 </html>

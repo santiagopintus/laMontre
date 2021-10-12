@@ -10,6 +10,8 @@ let tipo = ''
 let smart = ''
 let source = ''
 let envio = ''
+//Carrito de relojes
+let carrito = []
 //Elementos HTML globales para ser accedidos en cualquier parte
 const tituloE = $('#tituloReloj');
 const marcaE = $('#marcaReloj');
@@ -27,12 +29,14 @@ const formatoImg = '.jpg'
 /* Funcion principal que llama a las otras */
 function main() {
     obtenerReloj();
+    obtenerCarrito();
     crearHTML();
     crearImagenGrande();
+    agregarAlCarrito();
 }
 
 function obtenerReloj() {
-    /* Obtiene el reloj que se guardó en LocalStorage y lo guardamos en session storage */
+    /* Obtiene el reloj que se guardó en LocalStorage */
     reloj = localStorage.getItem('reloj');
     
     /* Parseando el objeto JSON a objecto */
@@ -41,8 +45,17 @@ function obtenerReloj() {
     envio = Math.round(precio * 0.03);
 }
 
+function obtenerCarrito() {
+    //Obtenemos el carrito actual
+    if (localStorage.getItem('carrito')) {
+        carrito = JSON.parse(localStorage.getItem('carrito'));
+    } else {
+        carrito = [];
+    }
+}
+
 function crearHTML() {
-    //Asigna el innnerHTML de los elementos HTML globales
+    //Asigna el innnerHTML de los elementos HTML globales del reloj
     $(tituloE).html(`${marca} ${modelo}`);
     $(marcaE).html(marca);
     $(modeloE).html(modelo);
@@ -54,6 +67,8 @@ function crearHTML() {
     $(envioE).html(`$${envio}`);
     /* Cambio el titulo de la pestaña */
     $(document).attr("title", `${marca} ${modelo} - La Montre`)
+    //Actualizo el numero de relojes en el carrito
+    $('#numeroCarrito').html(`${carrito.length}`)
 }
 
 function crearImagenGrande() {
@@ -90,4 +105,21 @@ function mostrarImagen() {
             $('.imagen-contenedor').hide()
         }, 400);
     })
+}
+
+function agregarAlCarrito() {
+    $('#agregarAlCarrito').on('click', (e) => {
+        e.preventDefault();
+        //Guardamos el reloj actual en la constante relojCarrito
+        const relojCarrito = { marca, modelo, precio, tipo, smart, source, envio }
+
+        //Agregamos el reloj al carrito global
+        carrito.push(relojCarrito);
+        
+        //reemplazamos el anterior carrito con el nuevo en localStorage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        //Actualizo el numero de relojes en el carrito
+        $('#numeroCarrito').html(`${carrito.length}`)
+    })
+    
 }

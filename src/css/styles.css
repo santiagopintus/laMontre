@@ -279,6 +279,11 @@ h4 {
   .info__container .info-derecha .envio-reloj h4 {
     margin-top: 0;
     font-size: 2.1rem; }
+  .info__container .info-derecha #numeroCarrito {
+    background-color: #ffffff;
+    color: #212529;
+    padding: 0 .5rem;
+    margin-left: 1rem; }
 
 /* La imagen del reloj cuando se agranda */
 .imagen-contenedor {
@@ -354,7 +359,7 @@ footer .copyright {
       width: 100%;
       margin-bottom: .7rem;
       background-color: #212529;
-      transition: all 550ms cubic-bezier(0.62, -0.99, 0.54, 1.9) 0s; }
+      transition: all 350ms cubic-bezier(0.62, -0.99, 0.54, 1.9) 0s; }
     .nav .navbar-toggler .hamburguesa .barra-2 {
       transform-origin: right; }
     .nav .navbar-toggler .hamburguesa .barra-3 {
@@ -371,3 +376,17 @@ footer .copyright {
     display: none; } }
 
 /*FIN HAMBURGUESA*/
+.titulo-carrito,
+.empty-cart-mje {
+  text-align: center; }
+
+.reloj-cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 100%;
+  gap: 1rem;
+  margin-bottom: 2rem; }
+  .reloj-cart .img-reloj-cart img {
+    max-width: 100%; }
+  .reloj-cart .info-reloj-cart .titulo-reloj-cart {
+    font-size: 1.8rem; }
