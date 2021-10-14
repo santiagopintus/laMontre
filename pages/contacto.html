@@ -41,42 +41,24 @@
         </nav>
     </header>
 
-    <main id="mainReloj">
-        
-        <!-- Estos datos se completan con JS -->
-        <h2 id="tituloReloj"></h2>
+    <main class="container">
 
-        <div class="info__container container">
-            <img id="imagenReloj" class="imagen-reloj">
-            <div class="info-derecha">
-                <ul class="info-lista">
-                    <li>Marca: <span id="marcaReloj"></span></li>
-                    <li>Modelo: <span id="modeloReloj"></span></li>
-                    <li>Tipo: <span id="tipoReloj"></span></li>
-                    <li>Es smart: <span id="smartONo"></span></li>
-                </ul>
-                <hr>
-                <div class="precio-reloj">
-                    <h3>Precio:</h3>
-                    <h3 id="precioReloj"></h3>
-                </div>
-                <div class="envio-reloj">
-                    <h4>Envio:</h4>
-                    <h4 id="envioReloj"></h4>
-                </div>
-                <button id="agregarAlCarrito" class="btn btn-primary">Agregar al carrito<span id="numeroCarrito"></span></button>
-                <button id="comprar" class="btn btn-primary">Comprar ahora</button>
+        <!-- Formulario de contacto -->
+        <form id="form" action="https://formspree.io/f/mzbyqbeb" method="POST">
+            <h2>Déjanos tu opinion!</h2>
+            <div class="field">
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email">
             </div>
-        </div>
-        
-        <!-- Contenedor de la imagen del reloj -->
-        <div class="imagen-contenedor">
-            <div class="imagen-overlay"></div>
-            <!-- El src y alt de la imagen se agregan con JS -->
-            <div id="gestureArea" class="contenedor-arrastrable">
-                <img class="imagen-grande tap-target" id="scaleElement">
+
+            <div class="field">
+                <label for="mensaje">Mensaje:</label>
+                <textarea name="mensaje" id="mensaje"></textarea>
             </div>
-        </div>
+
+            <button class="btn btn-primary" id="formButton">Submit</button>
+            <p id="formStatus" class="mensajeAlerta"></p>
+        </form>
 
     </main>
 
@@ -86,11 +68,11 @@
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Interact JS -->
-    <script type="module" src="../src/js/interact.js"></script>
     <!-- Menu responsive -->
     <script src="../src/js/menu-responsive.js"></script>
     <!-- Mis scripts -->
     <script src="../src/js/resumen-reloj.js"></script>
+    <!-- Contacto -->
+    <script src="../src/js/contacto.js"></script>
 </body>
 </html>

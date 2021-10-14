@@ -140,7 +140,8 @@ h4 {
   display: block;
   margin: 0 auto;
   padding: .5rem;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  width: fit-content; }
 
 @media only screen and (min-width: 768px) {
   .home-section__grid {
@@ -402,3 +403,27 @@ footer .copyright {
     max-width: 100%; }
   .reloj-cart .info-reloj-cart .titulo-reloj-cart {
     font-size: 1.8rem; }
+
+#form {
+  background-color: #6c757d;
+  padding: 2rem;
+  color: #ffffff; }
+  #form h2 {
+    text-align: center; }
+  #form .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem; }
+    #form .field textarea {
+      height: 10rem; }
+  #form .mensajeAlerta {
+    padding: 2rem; }
+    #form .mensajeAlerta.exito {
+      background-color: #104b1a; }
+    #form .mensajeAlerta.error {
+      background-color: #5e0915; }
+  @media only screen and (min-width: 768px) {
+    #form {
+      padding: 2rem 10rem; }
+      #form .field textarea {
+        height: 15rem; } }
