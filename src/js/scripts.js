@@ -3,54 +3,22 @@ $(document).ready(function () {
     main();
 });
 
-// const relojes = [
-//     //Marca,     Modelo,                     Precio,    Tipo,   Smart, nombre de imagen
-//     ['Xiaomi',  'Smart Band 5',              2939,      true,   true, 'Xiaomi_SmartBand5'],
-//     ['Xiaomi',  'Smart Band 6',              4799,      true,   true, 'Xiaomi_SmartBand6'],
-//     ['Xiaomi',  'Mi Watch Lite 1.4"',        7719,      true,   true, 'Xiaomi_miWatchLite1.4'],
-//     ['Skmei',   '9096',                      3699,      false,  false,'Skmei_9096'],
-//     ['Skmei',   '1251',                      2499,      true,   false,'Skmei_1251'],
-//     ['Casio',   'A158wa',                    4950,      true,   false,'Casio_A158wa'],
-//     ['Casio',   'Mq-24',                     2980,      false,  false,'Casio_Mq-24'],
-//     ['Casio',   'GG-1000-1A3',               66132,     false,  false,'Casio_GG-1000-1A3'],
-//     ['Diesel',  '6628',                      4696.09,   false,  false,'Diesel_6628'],
-//     ['Diesel',  '6630',                      4586.75,   false,  false,'Diesel_6630'],
-//     ['Garmin', 'Instinct Tactical Coyote',   49995,    true, true, 'Garmin_InstinctTacticalCoyote'],
-//     ['Garmin', 'Forerunner 55',              37999,     true,   true, 'Garmin_Forerunner55'],
-//     ['Garmin', 'Venu SQ',                    38995,     true,   true, 'Garmin_VenuSQ'],
-//     ['Huawei', 'Honor Band 5',               5499,      true,   true, 'Huawei_HonorBand5'],
-//     ['Mistral', 'SMTM7',                     12686.41,  false,  true, 'Mistral_SMTM7'],
-//     ['Sweet',   'GpsPro',                    12127,     true,   true, 'Sweet_GpsPro'],
-//     ['Samsung', 'Galaxy Watch 4',            39999,     true,   true, 'samsung_galaxyWatch4'],
-//     ['Amazfit', 'Fashion GTS 2 Mini 1.55"',  11399,     true,   true, 'Amazfit_FashionGTS2Mini1.55'],
-//     ['Samsung', 'Galaxy Fit 2 1.1"',         5599,      true,   true, 'Samsung_GalaxyFit21.1']
-// ];
-
-const frases = [
-    'Bienvenid@! Disfruta el paseo!',
-    'Hola! Espero que estés con ganas de darte un gustito!',
-    'Te doy la bienvenida a La Montre.',
-    'Espero que encuentres lo que buscas!',
-    '"Si miras el reloj, el reloj te mirará a ti." - Raúl Campoy Guillén',
-    'También hay relojes de sangre; la gente suele llamarles el corazón.',
-    '"El reloj no existe en las horas felices." - Ramón Gómez de la Serna',
-    '"Aún un reloj parado tiene razón dos veces al día." - Marie von Ebner-Eschenbach',
-    '"Un hombre con un reloj sabe la hora que es; uno con dos no está tan seguro." - Anónimo',
-    'Convierte tus sueños en realidad.',
-    '"Los días pueden ser iguales para un reloj, pero no para un hombre." - Marcel Proust',
-    '"Vivimos o morimos por el reloj, ese es todo el tiempo que tenemos." - Tom Hanks',
-    '“El tictac de los relojes parece un ratón que roe el tiempo.” - Alphonse Allais'
-]
 //El primer array contendrá los relojes, cada uno en formato de array
 const relojes = [];
 //Este segundo array contendrá los relojes, cada uno en formato de objeto
 const relojesObj = [];
+//El array que contendrá las frases que irán cambiando aleatoriamente.
+const frases = [];
 
 //Variables para la parte del pago
 const interes = 1.2
 let precioTotal;
 let cuota;
 
+//La ruta al JSON de los relojes
+let relojesUrl = "src/data/relojes.json";
+//La ruta al JSON de las frases
+let frasesUrl = "src/data/frases.json";
 //La ruta a las imágenes de los relojes
 const imagenesPath = 'src/img/relojes/';
 //Este formato funciona si todas las imagenes tienen el mismo formato.
@@ -68,10 +36,10 @@ class Reloj {
 }
 
 function main() {
-    elegirSaludo();
+    obtenerFrases();
     
     obtenerRelojes();
-    
+
     escucharCambioOrden();
     
     /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
@@ -82,15 +50,25 @@ function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function elegirSaludo() {
-    //Elige un saludo aleatorio del arreglo de saludos y lo pasa al DOM
-    const saludoIndex = randInt(0, frases.length - 1);
-    const saludo = frases[saludoIndex];
-    $('#saludo').html(saludo);
+function obtenerFrases() {
+    //Elige una frase aleatoria del archivo JSON y lo pasa al DOM
+    $.getJSON(frasesUrl, (respuesta, estado) => {
+        if (estado == "success") {
+            let frasesJSON = respuesta;
+            for (let frase of frasesJSON) {
+                frases.push(frase);
+            }
+        }
+    })
+
+    //Elige un número random entre 0 y frases.lenght - 1
+    //Selecciona ese número de frase y lo pasa al DOM
+    $(document).ajaxStop(() => {
+        escucharCambioFrase();
+    })
 }
 
 function obtenerRelojes() {
-    let relojesUrl = "src/relojes.json";
 
     $.getJSON(relojesUrl, (respuesta, estado) => {
         
@@ -205,6 +183,15 @@ function mostrarRelojes() {
     /* Después de mostrarlos escucho por un click
     (Para que cada vez que se ordenen sean clickeables)*/
     escucharClickReloj();
+}
+
+function escucharCambioFrase() {
+
+    $('#btnFrases').on('click', () => {
+        const fraseIndex = randInt(0, frases.length - 1);
+        const frase = frases[fraseIndex];
+        $('#frase').html(frase);
+    })
 }
 
 function escucharCambioOrden() {

@@ -58,6 +58,11 @@ h4 {
   .btn-primary:hover {
     background-color: #31373d; }
 
+@media only screen and (min-width: 768px) {
+  .btn {
+    display: inline-block;
+    width: fit-content; } }
+
 /* Layout */
 /* Header */
 .header {
@@ -126,15 +131,22 @@ h4 {
   line-height: 1.8;
   letter-spacing: .5px; }
 
-.saludo {
+.frase {
   font-family: "Noto Serif", serif;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  margin-bottom: .5rem; }
+
+.btn-frases {
+  display: block;
+  margin: 0 auto;
+  padding: .5rem;
+  font-size: 1.6rem; }
 
 @media only screen and (min-width: 768px) {
   .home-section__grid {
     display: grid;
     grid-template-columns: 1fr 1fr; }
-  .saludo {
+  .frase {
     font-size: 3.6rem; } }
 
 /* Titulo */
