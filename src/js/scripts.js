@@ -3,28 +3,28 @@ $(document).ready(function () {
     main();
 });
 
-const relojes = [
-    //Marca,     Modelo,                     Precio,    Tipo,   Smart, nombre de imagen
-    ['Xiaomi',  'Smart Band 5',              2939,      true,   true, 'Xiaomi_SmartBand5'],
-    ['Xiaomi',  'Smart Band 6',              4799,      true,   true, 'Xiaomi_SmartBand6'],
-    ['Xiaomi',  'Mi Watch Lite 1.4"',        7719,      true,   true, 'Xiaomi_miWatchLite1.4'],
-    ['Skmei',   '9096',                      3699,      false,  false,'Skmei_9096'],
-    ['Skmei',   '1251',                      2499,      true,   false,'Skmei_1251'],
-    ['Casio',   'A158wa',                    4950,      true,   false,'Casio_A158wa'],
-    ['Casio',   'Mq-24',                     2980,      false,  false,'Casio_Mq-24'],
-    ['Casio',   'GG-1000-1A3',               66132,     false,  false,'Casio_GG-1000-1A3'],
-    ['Diesel',  '6628',                      4696.09,   false,  false,'Diesel_6628'],
-    ['Diesel',  '6630',                      4586.75,   false,  false,'Diesel_6630'],
-    ['Garmin', 'Instinct Tactical Coyote',   49995,    true, true, 'Garmin_InstinctTacticalCoyote'],
-    ['Garmin', 'Forerunner 55',              37999,     true,   true, 'Garmin_Forerunner55'],
-    ['Garmin', 'Venu SQ',                    38995,     true,   true, 'Garmin_VenuSQ'],
-    ['Huawei', 'Honor Band 5',               5499,      true,   true, 'Huawei_HonorBand5'],
-    ['Mistral', 'SMTM7',                     12686.41,  false,  true, 'Mistral_SMTM7'],
-    ['Sweet',   'GpsPro',                    12127,     true,   true, 'Sweet_GpsPro'],
-    ['Samsung', 'Galaxy Watch 4',            39999,     true,   true, 'samsung_galaxyWatch4'],
-    ['Amazfit', 'Fashion GTS 2 Mini 1.55"',  11399,     true,   true, 'Amazfit_FashionGTS2Mini1.55'],
-    ['Samsung', 'Galaxy Fit 2 1.1"',         5599,      true,   true, 'Samsung_GalaxyFit21.1']
-];
+// const relojes = [
+//     //Marca,     Modelo,                     Precio,    Tipo,   Smart, nombre de imagen
+//     ['Xiaomi',  'Smart Band 5',              2939,      true,   true, 'Xiaomi_SmartBand5'],
+//     ['Xiaomi',  'Smart Band 6',              4799,      true,   true, 'Xiaomi_SmartBand6'],
+//     ['Xiaomi',  'Mi Watch Lite 1.4"',        7719,      true,   true, 'Xiaomi_miWatchLite1.4'],
+//     ['Skmei',   '9096',                      3699,      false,  false,'Skmei_9096'],
+//     ['Skmei',   '1251',                      2499,      true,   false,'Skmei_1251'],
+//     ['Casio',   'A158wa',                    4950,      true,   false,'Casio_A158wa'],
+//     ['Casio',   'Mq-24',                     2980,      false,  false,'Casio_Mq-24'],
+//     ['Casio',   'GG-1000-1A3',               66132,     false,  false,'Casio_GG-1000-1A3'],
+//     ['Diesel',  '6628',                      4696.09,   false,  false,'Diesel_6628'],
+//     ['Diesel',  '6630',                      4586.75,   false,  false,'Diesel_6630'],
+//     ['Garmin', 'Instinct Tactical Coyote',   49995,    true, true, 'Garmin_InstinctTacticalCoyote'],
+//     ['Garmin', 'Forerunner 55',              37999,     true,   true, 'Garmin_Forerunner55'],
+//     ['Garmin', 'Venu SQ',                    38995,     true,   true, 'Garmin_VenuSQ'],
+//     ['Huawei', 'Honor Band 5',               5499,      true,   true, 'Huawei_HonorBand5'],
+//     ['Mistral', 'SMTM7',                     12686.41,  false,  true, 'Mistral_SMTM7'],
+//     ['Sweet',   'GpsPro',                    12127,     true,   true, 'Sweet_GpsPro'],
+//     ['Samsung', 'Galaxy Watch 4',            39999,     true,   true, 'samsung_galaxyWatch4'],
+//     ['Amazfit', 'Fashion GTS 2 Mini 1.55"',  11399,     true,   true, 'Amazfit_FashionGTS2Mini1.55'],
+//     ['Samsung', 'Galaxy Fit 2 1.1"',         5599,      true,   true, 'Samsung_GalaxyFit21.1']
+// ];
 
 const frases = [
     'Bienvenid@! Disfruta el paseo!',
@@ -41,13 +41,16 @@ const frases = [
     '"Vivimos o morimos por el reloj, ese es todo el tiempo que tenemos." - Tom Hanks',
     '“El tictac de los relojes parece un ratón que roe el tiempo.” - Alphonse Allais'
 ]
+//El primer array contendrá los relojes, cada uno en formato de array
+const relojes = [];
+//Este segundo array contendrá los relojes, cada uno en formato de objeto
+const relojesObj = [];
 
-let interes = 1.2
-let relojesObj = []
+//Variables para la parte del pago
+const interes = 1.2
 let precioTotal;
 let cuota;
-//El nombre de la persona
-let nombre = '';
+
 //La ruta a las imágenes de los relojes
 const imagenesPath = 'src/img/relojes/';
 //Este formato funciona si todas las imagenes tienen el mismo formato.
@@ -67,57 +70,74 @@ class Reloj {
 function main() {
     elegirSaludo();
     
-    ordenarRelojes(0);
-    
-    agregarReloj();
-    
-    mostrarRelojes();
+    obtenerRelojes();
     
     escucharCambioOrden();
     
     /* Más adelante se obtendrán estos datos con un formulario o inputs.(↓) */
-    
     // calcularCuotas(precio, cantCuotas);
 }
 
-function randomInteger(min, max) {
+function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function elegirSaludo() {
     //Elige un saludo aleatorio del arreglo de saludos y lo pasa al DOM
-    const saludoIndex = randomInteger(0, frases.length - 1);
+    const saludoIndex = randInt(0, frases.length - 1);
     const saludo = frases[saludoIndex];
     $('#saludo').html(saludo);
+}
+
+function obtenerRelojes() {
+    let relojesUrl = "src/relojes.json";
+
+    $.getJSON(relojesUrl, (respuesta, estado) => {
+        
+        if (estado === "success") {
+
+            let relojesJSON = respuesta;
+
+            for (let reloj of relojesJSON) {
+                //Guardo el reloj en un nuevo arreglo
+
+                let relojArray = [];
+
+                relojArray.push(reloj.marca);
+                relojArray.push(reloj.modelo);
+                relojArray.push(reloj.precio);
+                relojArray.push(reloj.tipo);
+                relojArray.push(reloj.smart);
+                relojArray.push(reloj.source);
+
+                //Agrego cada arreglo de reloj al arreglo de relojes donde será ordenado.
+                relojes.push(relojArray);
+            }
+        }
+    });
+
+    /* Cuando se termina el Ajax request, se llama la función */
+    $(document).ajaxStop(function() {
+        ordenarRelojes(0);
+    });
 }
 
 function agregarReloj() {
     /* Recorre el array de relojes y va creando un objeto por cada uno,
     Luego lo agrega al arreglo relojObj */
-    relojesObj = [] //Vacío el array para volver a llenarlo.
-    for (let reloj of relojes) {
-        let [ marca, modelo, precio, tipo, smart, source ] = reloj
+
+    //Vacío el array para volver a llenarlo.
+    for (let i = relojesObj.length; i > 0; i--) {
+        relojesObj.pop();
+    }
+
+    for (const reloj of relojes) {
+        let [marca, modelo, precio, tipo, smart, source] = reloj;
         let relojObj = new Reloj(marca, modelo, precio, tipo, smart, source);
         relojesObj.push(relojObj);
     }
-}
 
-function escucharCambioOrden() {
-    /*Cuando hay un cambio en el select de orden, se ordenan los relojes,
-    se vuelven a agregar al array relojesObj y se muestran*/
-
-    $('#orden').on('change', (e) => {
-        ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
-        agregarReloj()
-        mostrarRelojes();
-    });
-
-    $('#ordenAscDesc').on('change', (e) => {
-        ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
-        agregarReloj()
-        mostrarRelojes();
-    });
-
+    mostrarRelojes();
 }
 
 function ordenarRelojes(i, orden = 'menor') {
@@ -142,12 +162,13 @@ function ordenarRelojes(i, orden = 'menor') {
             return (a[i] === b[i]) ? 0 : a[i]? 1 : -1;
         }
     })
+    //Después de ordenar el array "relojes" los agrego en forma de objeto con la siguiente función:
+    agregarReloj();
 }
 
 function mostrarRelojes() {
     /* Primero vacío el HTML de relojes, luego recorro el array relojesObj
     y por cada reloj creo una card en el DOM*/
-    
     if ($('#contenedorRelojes .reloj:first-child')) {
         $('#contenedorRelojes').empty();
     }
@@ -184,6 +205,20 @@ function mostrarRelojes() {
     /* Después de mostrarlos escucho por un click
     (Para que cada vez que se ordenen sean clickeables)*/
     escucharClickReloj();
+}
+
+function escucharCambioOrden() {
+    /*Cuando hay un cambio en el select de orden, se ordenan los relojes,
+    se vuelven a agregar al array relojesObj y se muestran*/
+    
+    $('#orden').on('change', (e) => {
+        ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
+    });
+    
+    $('#ordenAscDesc').on('change', (e) => {
+        ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
+    });
+    
 }
 
 function escucharClickReloj() {
@@ -234,3 +269,4 @@ function mostrarReloj(idReloj) {
 //     //Calculo el valor de cada cuota y la redondeo
 //     cuota = Math.round(precioTotal / cantCuotas * 100) / 100
 // }
+

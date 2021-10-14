@@ -1,0 +1,155 @@
+[
+
+    { 
+        "marca" : "Xiaomi",  
+        "modelo": "Smart Band 5",             
+        "precio": 2939,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "Xiaomi_SmartBand5"
+    },
+    { 
+        "marca" : "Xiaomi",  
+        "modelo": "Smart Band 6",              
+        "precio": 4799,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "Xiaomi_SmartBand6"
+    },
+    { 
+        "marca" : "Xiaomi",  
+        "modelo": "Mi Watch Lite 1.4",    
+        "precio": 7719,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "Xiaomi_miWatchLite1.4"
+    },
+    { 
+        "marca" : "Skmei",   
+        "modelo": "9096",                      
+        "precio": 3699,      
+        "tipo": false,  
+        "smart": false,
+        "source": "Skmei_9096"
+    },
+    { 
+        "marca" : "Skmei",   
+        "modelo": "1251",                      
+        "precio": 2499,      
+        "tipo": true,   
+        "smart": false,
+        "source": "Skmei_1251"
+    },
+    { 
+        "marca" : "Casio",   
+        "modelo": "A158wa",                    
+        "precio": 4950,      
+        "tipo": true,   
+        "smart": false,
+        "source": "Casio_A158wa"
+    },
+    { 
+        "marca" : "Casio",   
+        "modelo": "Mq-24",                     
+        "precio": 2980,      
+        "tipo": false,  
+        "smart": false,
+        "source": "Casio_Mq-24"
+    },
+    { 
+        "marca" : "Casio",   
+        "modelo": "GG-1000-1A3",               
+        "precio": 66132,     
+        "tipo": false,  
+        "smart": false,
+        "source": "Casio_GG-1000-1A3"
+    },
+    { 
+        "marca" : "Diesel",  
+        "modelo": "6628",                      
+        "precio": 4696.09,   
+        "tipo": false,  
+        "smart": false,
+        "source": "Diesel_6628"
+    },
+    { 
+        "marca" : "Diesel",  
+        "modelo": "6630",                      
+        "precio": 4586.75,   
+        "tipo": false,  
+        "smart": false,
+        "source": "Diesel_6630"
+    },
+    { 
+        "marca" : "Garmin", 
+        "modelo": "Instinct Tactical Coyote",   
+        "precio": 49995,    
+        "tipo": true, 
+        "smart": true, 
+        "source": "Garmin_InstinctTacticalCoyote"
+    },
+    { 
+        "marca" : "Garmin", 
+        "modelo": "Forerunner 55",              
+        "precio": 37999,     
+        "tipo": true,   
+        "smart": true, 
+        "source": "Garmin_Forerunner55"
+    },
+    { 
+        "marca" : "Garmin", 
+        "modelo": "Venu SQ",                    
+        "precio": 38995,     
+        "tipo": true,   
+        "smart": true, 
+        "source": "Garmin_VenuSQ"
+    },
+    { 
+        "marca" : "Huawei", 
+        "modelo": "Honor Band 5",               
+        "precio": 5499,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "Huawei_HonorBand5"
+    },
+    { 
+        "marca" : "Mistral", 
+        "modelo": "SMTM7",                     
+        "precio": 12686.41,  
+        "tipo": false,  
+        "smart": true, 
+        "source": "Mistral_SMTM7"
+    },
+    { 
+        "marca" : "Sweet",   
+        "modelo": "GpsPro",                    
+        "precio": 12127,     
+        "tipo": true,   
+        "smart": true, 
+        "source": "Sweet_GpsPro"
+    },
+    { 
+        "marca" : "Samsung", 
+        "modelo": "Galaxy Watch 4",            
+        "precio": 39999,     
+        "tipo": true,   
+        "smart": true, 
+        "source": "samsung_galaxyWatch4"
+    },
+    { 
+        "marca" : "Amazfit", 
+        "modelo": "Fashion GTS 2 Mini 1.55",  
+        "precio": 11399,     
+        "tipo": true,   
+        "smart": true, 
+        "source": "Amazfit_FashionGTS2Mini1.55"
+    },
+    { 
+        "marca" : "Samsung", 
+        "modelo": "Galaxy Fit 2 1.1",         
+        "precio": 5599,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "Samsung_GalaxyFit21.1"
+    }
+]
