@@ -97,6 +97,7 @@ function obtenerRelojes() {
     /* Cuando se termina el Ajax request, se llama la función */
     $(document).ajaxStop(function() {
         ordenarRelojes(0);
+        cambiarTextoAscDesc(0);
     });
 }
 
@@ -199,6 +200,9 @@ function escucharCambioOrden() {
     se vuelven a agregar al array relojesObj y se muestran*/
     
     $('#orden').on('change', (e) => {
+        //Para actualizar el texto del segundo input select
+        cambiarTextoAscDesc($('#orden').val());
+        //Se ordenan en el criterio seleccionado
         ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
     });
     
@@ -206,6 +210,32 @@ function escucharCambioOrden() {
         ordenarRelojes($('#orden').val(), $('#ordenAscDesc').val());
     });
     
+}
+
+function cambiarTextoAscDesc(orden) {
+    /* Dependiendo del criterio de ordenación que selecciona el usuario, cambiamos
+    el texto del segundo tag select para adaptarlo*/
+    if (orden == "0") {
+        $('#ordenAscDesc').html(`
+            <option value="menor">A a la Z</option>
+            <option value="mayor">Z a la A</option>
+        `)
+    } else if (orden == "2") {
+        $('#ordenAscDesc').html(`
+            <option value="menor">Menor a mayor</option>
+            <option value="mayor">Mayor a menor</option>
+        `)
+    } else if (orden == "3") {
+        $('#ordenAscDesc').html(`
+            <option value="menor">Digital primero</option>
+            <option value="mayor">Analógico primero</option>
+        `)
+    } else if (orden == "4") {
+        $('#ordenAscDesc').html(`
+            <option value="menor">Smart primero</option>
+            <option value="mayor">No smart primero</option>
+        `)
+    }
 }
 
 function escucharClickReloj() {
