@@ -50,7 +50,8 @@ h4 {
   font-size: 1.6rem;
   border: none;
   cursor: pointer;
-  transition: all 200ms ease; }
+  transition: all 200ms ease;
+  text-decoration: none; }
 
 .btn-primary {
   background-color: #212529;
@@ -394,15 +395,34 @@ footer .copyright {
   text-align: center; }
 
 .reloj-cart {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
   gap: 1rem;
-  margin-bottom: 2rem; }
-  .reloj-cart .img-reloj-cart img {
-    max-width: 100%; }
-  .reloj-cart .info-reloj-cart .titulo-reloj-cart {
-    font-size: 1.8rem; }
+  padding: 1rem; }
+  .reloj-cart:nth-child(odd) {
+    background-color: #ced4da; }
+  .reloj-cart .img-reloj-cart {
+    overflow: hidden;
+    width: 100%;
+    height: auto; }
+    .reloj-cart .img-reloj-cart img {
+      max-width: 100%; }
+  .reloj-cart .info-reloj-cart h4 {
+    font-size: 2.4rem; }
+  .reloj-cart .info-reloj-cart p {
+    font-size: 1.6rem; }
+
+@media only screen and (min-width: 768px) {
+  .reloj-cart {
+    flex-direction: row;
+    justify-content: start;
+    gap: 5rem; }
+    .reloj-cart .img-reloj-cart {
+      width: 30rem;
+      height: 30rem; }
+      .reloj-cart .img-reloj-cart img {
+        max-width: 100%; } }
 
 #form {
   background-color: #6c757d;
@@ -427,3 +447,6 @@ footer .copyright {
       padding: 2rem 10rem; }
       #form .field textarea {
         height: 15rem; } }
+
+main h2 {
+  text-align: center; }

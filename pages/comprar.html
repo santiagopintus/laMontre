@@ -9,14 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../src/img/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="src/img/favicon.svg" type="image/x-icon">
+    <!-- AOS styles -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Estilos -->
     <link rel="stylesheet" href="../src/css/styles.css">
     <!-- Título -->
     <title>Home - La Montre</title>
 </head>
 <body class="container">
-    
+
     <header class="header">
         <a href="../index.html" class="contenedor-logo">
             <img class="logo" src="../src/img/logo.svg" alt="Logo de La Montre">
@@ -40,27 +42,12 @@
             </ul>
         </nav>
     </header>
-
+    
     <main class="container">
-
-        <!-- Formulario de contacto -->
-        <form id="form" action="https://formspree.io/f/mzbyqbeb" method="POST">
-            <h2>Déjanos tu opinion!</h2>
-            <div class="field">
-                <label for="email">Email:</label>
-                <input id="email" type="email" name="email">
-            </div>
-
-            <div class="field">
-                <label for="mensaje">Mensaje:</label>
-                <textarea name="mensaje" id="mensaje"></textarea>
-            </div>
-
-            <button class="btn btn-primary" id="formButton">Submit</button>
-            <p id="formStatus" class="E"></p>
-        </form>
-
-    </main>
+    
+        <h2>Esta página está en desarrollo. Pero pronto podrás hacer tu compra</h2>
+    </main> 
+       
 
     <footer class="container">
         <p class="copyright">La Montre&trade; - Diseñado y desarrollado por <a href="https://github.com/santiagopintus" target="_blank" class="link">Santiago Pintus</a> - Todos los derechos reservados &copy;</p>
@@ -68,11 +55,11 @@
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Menu responsive -->
     <script src="../src/js/menu-responsive.js"></script>
-    <!-- Mis scripts -->
-    <script src="../src/js/resumen-reloj.js"></script>
-    <!-- Contacto -->
-    <script src="../src/js/contacto.js"></script>
+    <!-- Carrito scripts -->
+    <script src="../src/js/carrito.js"></script>
 </body>
 </html>
