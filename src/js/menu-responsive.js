@@ -5,10 +5,8 @@ $(() => {
 //Activamos el menu para que sea responsive
 function menuResponsive() {
     $('.navbar-toggler').on('click', () => {
-        $('.nav ul').slideToggle(400, () => {
-            $('.hamburguesa').toggleClass('abierto');
-        });
-
+        $('.hamburguesa').toggleClass('abierto');
+        $('.nav ul').slideToggle();
     })
     
     $(window).resize(function () { 

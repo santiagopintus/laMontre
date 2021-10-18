@@ -25,6 +25,14 @@
         "source": "Xiaomi_miWatchLite1.4"
     },
     { 
+        "marca" : "Xiaomi",  
+        "modelo": "Imilab W12",    
+        "precio": 6613,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "xiaomi_imilabW12"
+    },
+    { 
         "marca" : "Skmei",   
         "modelo": "9096",                      
         "precio": 3699,      
@@ -151,5 +159,21 @@
         "tipo": true,   
         "smart": true, 
         "source": "Samsung_GalaxyFit21.1"
+    },
+    { 
+        "marca" : "Iwo", 
+        "modelo": "Fk78",         
+        "precio": 6149,      
+        "tipo": true,   
+        "smart": true, 
+        "source": "Iwo_Fk78"
+    },
+    { 
+        "marca" : "Swatch", 
+        "modelo": "The Starry Night",         
+        "precio": 17995,      
+        "tipo": false,   
+        "smart": false, 
+        "source": "Swatch_TheStarryNight"
     }
 ]

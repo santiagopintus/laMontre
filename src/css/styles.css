@@ -51,7 +51,8 @@ h4 {
   border: none;
   cursor: pointer;
   transition: all 200ms ease;
-  text-decoration: none; }
+  text-decoration: none;
+  text-align: center; }
 
 .btn-primary {
   background-color: #212529;
@@ -116,8 +117,7 @@ h4 {
     .header .contenedor-logo {
       margin: 0; }
     .header .nav ul {
-      display: flex;
-      min-width: 49rem; }
+      display: flex; }
       .header .nav ul li {
         display: inline-block; } }
 
@@ -434,6 +434,9 @@ footer .copyright {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem; }
+    #form .field input, #form .field textarea {
+      padding: 1rem;
+      font-size: 1.6rem; }
     #form .field textarea {
       height: 10rem; }
   #form .mensajeAlerta {
