@@ -4,9 +4,9 @@ $(() => {
 
 function main() {
     
-    var form = document.getElementById("form");
+    let form = $('#form');
 
-    form.addEventListener("submit", handleSubmit)
+    form.submit(handleSubmit);
 }
 
 function handleSubmit(event) {
@@ -23,19 +23,25 @@ function handleSubmit(event) {
             'Accept': 'application/json'
         },
     }
-    
-    fetch(urlForm, infoPost)
+    if ($('#email').val() == '' && $('#mensaje').val() == '') {
+        $('#formStatus').show();
+        $('#formStatus').html("Todos los campos son obligatorios");
+    } else {
+        fetch(urlForm, infoPost)
         .then(response => {
-            $('#formStatus').show();
-            $('#formStatus').addClass('exito');
-            $('#formStatus').html("Gracias por el mensaje!");
-            form.reset();
-        })
-        .catch(error => {
-            $('#formStatus').show();
-            $('#formStatus').addClass('error');
-            $('#formStatus').html("Hubo un error enviando el mensaje");
+            if (response.ok) {
+                $('#formStatus').show();
+                $('#formStatus').addClass('exito');
+                $('#formStatus').html("Gracias por el mensaje!");
+                form.reset();
+            } else {
+                $('#formStatus').show();
+                $('#formStatus').addClass('error');
+                $('#formStatus').html("Hubo un error en el envío.");
+            }
         });
+    }
+    
     setTimeout(() => {
         $('#formStatus').hide()
     }, 5000);
