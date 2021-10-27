@@ -42,9 +42,8 @@ interact(gestureArea)
         var currentAngle = event.angle + angleScale.angle
         var currentScale = event.scale * angleScale.scale
 
-        scaleElement.style.transform =
-          'rotate(' + currentAngle + 'deg)' + 'scale(' + currentScale + ')'
-        
+        scaleElement.style.transform = `
+          rotate(${currentAngle}deg) scale(${currentScale}) translateX(-50%)`;
         dragMoveListener(event)
       },
       end (event) {

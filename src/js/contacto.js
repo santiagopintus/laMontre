@@ -23,7 +23,7 @@ function handleSubmit(event) {
             'Accept': 'application/json'
         },
     }
-    if ($('#email').val() == '' && $('#mensaje').val() == '') {
+    if ($('#email').val() == '' || $('#mensaje').val() == '') {
         $('#formStatus').show();
         $('#formStatus').html("Todos los campos son obligatorios");
     } else {
