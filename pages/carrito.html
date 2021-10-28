@@ -47,7 +47,7 @@
     
         <h3 class="titulo-carrito">Carrito <span id="numeroCarrito"></span></h3>
 
-        <p class="empty-cart-mje">No hay relojes en el carrito, por favor agregue alguno.</p>
+        <p class="empty-cart-mje">No sabes cuál llevar? Seguro estarás feliz de tu compra. <a href="../index.html">Llena tu carrito!</a></p>
 
         <div class="contenedor-carrito">
             <!-- Llenado dinámicamente con JS -->
@@ -60,9 +60,57 @@
 
         <div class="opciones">
             <button id="vaciar" class="btn btn-primary">Vaciar carrito</button>
-            <a href="comprar.html" id="comprar" class="btn btn-primary">Ir a comprar</a>
+            <button id="comprar" class="btn btn-primary">Ir a comprar</button>
         </div>
-    </main> 
+
+        <section class="compra-overlay">
+            <div class="compra-content">
+                <h2>Finalizar compra</h2>
+                
+                <!-- Resumen final -->
+                <div class="resumen-final">
+                    <h4 id="totalRelojes"></h4>
+                    <h4>Envío: <span id="envioFinal"></span></h4>
+                    <h3>Total: <span id="totalFinal"></span></h3>
+                    <p id="resumenCuotas"></p>
+                </div>
+
+                <!-- Metodos de pago -->
+                <form class="form-compra">
+                    <div class="field">
+                        <label for="metodoPago">Método de pago:</label>
+                        <select name="metodoPago" id="metodoPago">
+                            <option value="debito" selected>Tarjeta de Débito</option>
+                            <option value="credito">Tarjeta de Crédito</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cuotas">Cuotas:</label>
+                        <select name="cuotas" id="cuotas" disabled>
+                            <option value="1">1 cuota</option>
+                            <option value="3">3 cuotas sin interés</option>
+                            <option value="6">6 cuotas sin interés</option>
+                            <option value="12">12 cuotas sin interés</option>
+                        </select>
+                    </div>
+                </form>
+
+                <div class="contenedor-opciones">
+                    
+                    <p>¿Quiere concretar la compra?</p>
+
+                    <div class="opciones">
+                        <button id="cancelarCompra" class="btn btn-secondary">Cancelar</button>
+                        <button id="confirmarCompra" class="btn btn-primary">Comprar</button>
+                    </div>
+                    
+                </div>
+
+                <div class="warning">
+                    <p>Esta compra es un simulador y no se le pedirán los datos de su tarjeta</p>
+                </div>
+        </section>
+    </main>
        
 
     <footer class="container">

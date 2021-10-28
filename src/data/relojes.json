@@ -22,7 +22,7 @@
         "precio": 7719,      
         "tipo": true,   
         "smart": true, 
-        "source": "Xiaomi_miWatchLite1.4"
+        "source": "Xiaomi_miWatchLite14"
     },
     { 
         "marca" : "Xiaomi",  
@@ -150,7 +150,7 @@
         "precio": 11399,     
         "tipo": true,   
         "smart": true, 
-        "source": "Amazfit_FashionGTS2Mini1.55"
+        "source": "Amazfit_FashionGTS2Mini155"
     },
     { 
         "marca" : "Samsung", 
@@ -158,7 +158,7 @@
         "precio": 5599,      
         "tipo": true,   
         "smart": true, 
-        "source": "Samsung_GalaxyFit21.1"
+        "source": "Samsung_GalaxyFit211"
     },
     { 
         "marca" : "Iwo", 

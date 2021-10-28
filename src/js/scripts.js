@@ -22,7 +22,7 @@ let frasesUrl = "src/data/frases.json";
 //La ruta a las imágenes de los relojes
 const imagenesPath = 'src/img/relojes/';
 //Este formato funciona si todas las imagenes tienen el mismo formato.
-const formatoImg = '.jpg'
+const formatoImg = '.webp';
 
 class Reloj {
     constructor(marca, modelo, precio, tipo, smart, source) {

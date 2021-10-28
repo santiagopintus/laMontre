@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Globales */
 body,
 html {
@@ -54,11 +55,21 @@ h4 {
   text-decoration: none;
   text-align: center; }
 
+.btn:hover {
+  transform: translateY(-0.1rem); }
+
 .btn-primary {
   background-color: #212529;
   color: #ffffff; }
   .btn-primary:hover {
     background-color: #31373d; }
+
+.btn-secondary {
+  background-color: transparent;
+  color: #212529;
+  border: 2px solid #212529; }
+  .btn-secondary:hover {
+    background-color: #d9d9d9; }
 
 @media only screen and (min-width: 768px) {
   .btn {
@@ -321,12 +332,7 @@ h4 {
     left: 0;
     touch-action: none; }
   .imagen-contenedor .imagen-grande {
-    touch-action: none;
-    margin-top: 5rem;
-    transform: translateX(-50%); }
-    .imagen-contenedor .imagen-grande.reset {
-      transform: translate(0);
-      transition: transform 0.3s ease-in-out; }
+    touch-action: none; }
 
 @media only screen and (min-width: 768px) {
   #tituloReloj {
@@ -338,8 +344,9 @@ h4 {
     gap: 2rem; }
     .info__container .info-derecha {
       margin-top: 0; }
-  .imagen-contenedor .contenedor-arrastrable {
-    left: 50%; } }
+  .imagen-contenedor .imagen-grande {
+    margin-top: 5rem;
+    transform: translateX(-50%); } }
 
 footer .copyright {
   margin: 10rem 0 5rem 0;
@@ -413,6 +420,51 @@ footer .copyright {
   .reloj-cart .info-reloj-cart p {
     font-size: 1.6rem; }
 
+.compra-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none; }
+  .compra-overlay .compra-content {
+    padding: 2rem;
+    max-width: 95%;
+    background-color: #e9ecef;
+    margin: 2rem auto 0 auto;
+    max-height: 95vh;
+    overflow: scroll;
+    /*Centrando todos los párrafos*/ }
+    .compra-overlay .compra-content .form-compra {
+      margin-bottom: 5rem; }
+      .compra-overlay .compra-content .form-compra .field {
+        margin-bottom: 1rem; }
+        .compra-overlay .compra-content .form-compra .field select {
+          padding: 1rem;
+          width: 100%;
+          font-size: 1.8rem; }
+    .compra-overlay .compra-content #resumenCuotas, .compra-overlay .compra-content .contenedor-opciones p,
+    .compra-overlay .compra-content .warning p {
+      text-align: center; }
+    .compra-overlay .compra-content .resumen-final {
+      background-color: #343a40;
+      color: #e9ecef;
+      padding: 2rem;
+      width: 100%;
+      margin-bottom: 2rem; }
+      .compra-overlay .compra-content .resumen-final h4 {
+        font-size: 2.2rem; }
+      .compra-overlay .compra-content .resumen-final h4, .compra-overlay .compra-content .resumen-final h3 {
+        width: 100%; }
+        .compra-overlay .compra-content .resumen-final h4 span, .compra-overlay .compra-content .resumen-final h3 span {
+          display: inline-block;
+          margin: 0 0 0 auto; }
+    .compra-overlay .compra-content .warning {
+      width: 100%;
+      margin-top: 5rem; }
+      .compra-overlay .compra-content .warning p {
+        width: 100%;
+        font-size: 1.6rem;
+        color: #6c757d; }
+
 @media only screen and (min-width: 768px) {
   .reloj-cart {
     flex-direction: row;
@@ -422,7 +474,24 @@ footer .copyright {
       width: 30rem;
       height: 30rem; }
       .reloj-cart .img-reloj-cart img {
-        max-width: 100%; } }
+        max-width: 100%; }
+  .compra-overlay .compra-content {
+    max-width: 90%; }
+    .compra-overlay .compra-content .form-compra {
+      width: 50%;
+      margin: 5rem auto; }
+      .compra-overlay .compra-content .form-compra .field select {
+        padding: .5rem;
+        display: block;
+        width: 100%;
+        font-size: 1.8rem; }
+    .compra-overlay .compra-content .contenedor-opciones {
+      width: 100%; }
+      .compra-overlay .compra-content .contenedor-opciones .opciones {
+        display: flex;
+        width: 30%;
+        justify-content: space-between;
+        margin: 0 auto; } }
 
 #form {
   background-color: #6c757d;
@@ -434,7 +503,7 @@ footer .copyright {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem; }
-    #form .field input, #form .field textarea {
+    #form .field input, #form .field textarea, #form .field select {
       padding: 1rem;
       font-size: 1.6rem; }
     #form .field textarea {

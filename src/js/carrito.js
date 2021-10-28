@@ -7,7 +7,10 @@ carrito = []
 //La ruta a las imágenes de los relojes
 const imagenesPath = '../src/img/relojes/';
 //Este formato funciona si todas las imagenes tienen el mismo formato.
-const formatoImg = '.jpg'
+const formatoImg = '.webp';
+//Datos de compra
+let envioTotal = 0;
+let totalPagar = 0;
 
 //FUNCION PRINCIPAL
 function main() {
@@ -18,6 +21,7 @@ function main() {
     }
 
     vaciarCarrito();
+    concretarCompra();
 }
 /* OTRAS FUNCIONES */
 
@@ -36,8 +40,6 @@ function crearHtml() {
     }
 
     if (carrito.length > 0) {
-        let envioTotal = 0;
-        let totalPagar = 0;
         let id = 0;
 
         for (let reloj of carrito) {
@@ -111,4 +113,68 @@ function eliminarReloj(id) {
     if (crearHtml()) {
         escucharEliminarItem();
     }
+}
+
+function concretarCompra() {
+    $('#comprar').on('click', () => {
+        crearCompraHtml();
+        $('.compra-overlay').show();
+        $('body').css('overflow', 'hidden');
+    });
+    
+    escucharMetodosPago();
+    escucharOpcionesCompra();
+}
+
+function crearCompraHtml() {
+    $('#envioFinal').html(`$${envioTotal}`);
+    $('#totalFinal').html(`$${totalPagar + envioTotal}`);
+    if (carrito.length == 1) {
+        $('#totalRelojes').html(`Reloj: $${totalPagar}`);
+        
+    } else {
+        $('#totalRelojes').html(`Relojes: $${totalPagar}`);
+    }
+}
+
+function escucharMetodosPago() {
+    $('#metodoPago').on('change', (e) => {
+        if($(e.target).val() == 'credito') {
+            $('#cuotas').removeAttr('disabled');
+            $('#resumenCuotas').show();
+            escucharCambioCuotas();
+        } else {
+            $('#resumenCuotas').hide();
+            $('#cuotas').attr('disabled', 'disabled');
+        }
+    });
+}
+
+function escucharCambioCuotas() {
+    $('#cuotas').on('change', (e) => {
+        cuotas = $(e.target).val();
+        let total = totalPagar + envioTotal;
+        let cuota = total / cuotas;
+
+        $('#resumenCuotas').html(`Pagarás en ${cuotas} cuotas sin interés de <b>$${cuota.toFixed(2)}</b>`)
+    });
+
+};
+
+function escucharOpcionesCompra() {
+    $('#cancelarCompra').on('click', () => {
+        $('#metodoPago').val('debito');
+        $('#metodoPago').trigger('change');
+        $('#cuotas').val('1');
+        $('.compra-overlay').hide();
+        $('body').css('overflow', 'visible');
+    });
+
+    $('#confirmarCompra').on('click', () => {
+        $('.compra-overlay').hide();
+        $('body').css('overflow', 'visible');
+        localStorage.removeItem('carrito');
+        obtenerCarrito();
+        crearHtml();
+    });
 }

@@ -8,10 +8,10 @@ import interact from 'https://cdn.interactjs.io/v1.9.20/interactjs/index.js';
 /* AGRANDAR LA IMAGEN CON GESTOS TÁCTILES */
 
 function dragMoveListener (event) {
-  var target = event.target
+  let target = event.target
   // Guardamos la info de los atributos data-x/data-y
-  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+  let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
 
   // Se translada el elemento
   target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
@@ -21,37 +21,30 @@ function dragMoveListener (event) {
   target.setAttribute('data-y', y);
 }
 
-var angleScale = {
+let angleScale = {
   angle: 0,
-  scale: 1
+  scale: 1,
 }
-var gestureArea = document.getElementById('gestureArea')
-var scaleElement = document.getElementById('scaleElement')
-var resetTimeout
+let gestureArea = document.getElementById('gestureArea')
+let scaleElement = document.getElementById('scaleElement')
 
 interact(gestureArea)
   .gesturable({
     listeners: {
       start (event) {
         angleScale.angle -= event.angle
-
-        clearTimeout(resetTimeout)
-        scaleElement.classList.remove('reset')
       },
       move (event) {
-        var currentAngle = event.angle + angleScale.angle
-        var currentScale = event.scale * angleScale.scale
+        let currentAngle = event.angle + angleScale.angle
+        let currentScale = event.scale * angleScale.scale
 
         scaleElement.style.transform = `
-          rotate(${currentAngle}deg) scale(${currentScale}) translateX(-50%)`;
+          rotate(${currentAngle}deg) scale(${currentScale})`;
         dragMoveListener(event)
       },
       end (event) {
         angleScale.angle = angleScale.angle + event.angle
         angleScale.scale = angleScale.scale * event.scale
-
-        resetTimeout = setTimeout(reset, 5000);
-        scaleElement.classList.add('reset');
       }
     }
   })
@@ -59,10 +52,3 @@ interact(gestureArea)
     listeners: { move: dragMoveListener },
     inertia: true,
   })
-
-function reset () {
-  scaleElement.style.transform = 'scale(1)'
-
-  angleScale.angle = 0
-  angleScale.scale = 1
-}

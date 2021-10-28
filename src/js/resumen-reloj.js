@@ -1,5 +1,5 @@
 $(() => {
-    //Calling main when content loaded
+    //Cargo la función principal
     main();
 })
 //Propiedades del objeto reloj.
@@ -10,9 +10,11 @@ let tipo = ''
 let smart = ''
 let source = ''
 let envio = ''
+
 //Carrito de relojes
 let carrito = []
 //Elementos HTML globales para ser accedidos en cualquier parte
+
 const tituloE = $('#tituloReloj');
 const marcaE = $('#marcaReloj');
 const modeloE = $('#modeloReloj');
@@ -21,10 +23,12 @@ const tipoE = $('#tipoReloj');
 const smartE = $('#smartONo');
 const precioE = $('#precioReloj');
 const envioE = $('#envioReloj');
+
 //La ruta a las imágenes de los relojes
 const imagenesPath = '../src/img/relojes/';
+
 //Este formato funciona si todas las imagenes tienen el mismo formato.
-const formatoImg = '.jpg'
+const formatoImg = '.webp';
 
 /* Funcion principal que llama a las otras */
 function main() {
