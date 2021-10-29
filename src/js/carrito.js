@@ -41,6 +41,7 @@ function crearHtml() {
 
     if (carrito.length > 0) {
         let id = 0;
+        totalPagar = 0
 
         for (let reloj of carrito) {
             ({ marca, modelo, precio, tipo, smart, source, envio } = reloj);
@@ -176,5 +177,16 @@ function escucharOpcionesCompra() {
         localStorage.removeItem('carrito');
         obtenerCarrito();
         crearHtml();
+
+        if ($('#compraExito').hasClass('esconder')){
+            $('#compraExito').removeClass('esconder');
+        };
+        $('#compraExito').show();
+        setTimeout(() => {
+            $('#compraExito').addClass('esconder');
+            setTimeout(() => {
+                $('#compraExito').hide();
+            }, 500);
+        }, 3000);
     });
 }

@@ -473,6 +473,29 @@ footer .copyright {
         font-size: 1.6rem;
         color: #6c757d; }
 
+.compra-realizada {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: fit-content;
+  padding: 4rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.7);
+  transition: opacity 0.5s ease-in-out;
+  display: none; }
+  .compra-realizada .tilde-titulo {
+    display: flex;
+    gap: 1rem; }
+    .compra-realizada .tilde-titulo img {
+      max-width: 4rem; }
+    .compra-realizada .tilde-titulo h4 {
+      text-align: center;
+      margin: 0; }
+  .compra-realizada p {
+    margin-bottom: 0; }
+  .compra-realizada.esconder {
+    opacity: 0; }
+
 @media only screen and (min-width: 768px) {
   .reloj-cart {
     flex-direction: row;
