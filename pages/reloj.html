@@ -47,7 +47,13 @@
         <h2 id="tituloReloj"></h2>
 
         <div class="info__container container">
+            <!-- Muestro el spinner mientras se carga la imagen -->
+            <div class="spinner" id="spinner">
+                <img src="../src/img/spinner.gif" alt="Loading spinner">
+            </div>
+            <!-- La imagen se carga con JS -->
             <img id="imagenReloj" class="imagen-reloj">
+
             <div class="info-derecha">
                 <ul class="info-lista">
                     <li>Marca: <span id="marcaReloj"></span></li>

@@ -76,6 +76,13 @@ h4 {
     display: inline-block;
     width: fit-content; } }
 
+.spinner {
+  width: 100%;
+  height: fit-content; }
+  .spinner img {
+    display: block;
+    width: 100%; }
+
 /* Layout */
 /* Header */
 .header {
@@ -282,6 +289,7 @@ h4 {
   text-align: center; }
 
 .info__container .imagen-reloj {
+  display: none;
   width: 100%;
   cursor: pointer; }
 

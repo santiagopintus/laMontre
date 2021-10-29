@@ -127,3 +127,8 @@ function agregarAlCarrito() {
     })
     
 }
+
+$(imagenE).on('load', () => {
+    $('#spinner').hide();
+    $(imagenE).show();
+});
