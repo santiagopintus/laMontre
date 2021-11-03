@@ -157,7 +157,7 @@ h4 {
 
 .btn-frases {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
   padding: .5rem;
   font-size: 1.6rem;
   width: fit-content; }
