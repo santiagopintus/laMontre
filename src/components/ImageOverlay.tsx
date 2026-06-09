@@ -114,7 +114,7 @@ export default function ImageOverlay({ src, alt, isOpen, onClose }: ImageOverlay
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={scaleElementRef}
-          src={src}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${src}`}
           alt={alt}
           className="select-none w-[95vw] h-auto md:w-auto md:h-[95vh] md:mt-20 md:-translate-x-1/2"
           draggable={false}
