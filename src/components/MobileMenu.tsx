@@ -20,10 +20,10 @@ export default function MobileMenu({ children }: { children: React.ReactNode }) 
       <button
         onClick={toggleOpen}
         aria-label="Abrir menú"
-        className="flex flex-col gap-[6px] p-2 md:hidden cursor-pointer"
+        className="flex cursor-pointer flex-col gap-[6px] p-2 md:hidden"
       >
         <span
-          className={`block h-[3px] w-7 bg-[#212529] transition-transform duration-300 ease-[cubic-bezier(0.62,-0.99,0.54,1.9)] origin-center ${
+          className={`block h-[3px] w-7 origin-center bg-[#212529] transition-transform duration-300 ease-[cubic-bezier(0.62,-0.99,0.54,1.9)] ${
             isOpen ? 'translate-y-[9px] rotate-45' : ''
           }`}
         />
@@ -33,13 +33,13 @@ export default function MobileMenu({ children }: { children: React.ReactNode }) 
           }`}
         />
         <span
-          className={`block h-[3px] w-7 bg-[#212529] transition-transform duration-300 ease-[cubic-bezier(0.62,-0.99,0.54,1.9)] origin-center ${
-            isOpen ? '-translate-y-[9px] -rotate-45' : ''
+          className={`block h-[3px] w-7 origin-center bg-[#212529] transition-transform duration-300 ease-[cubic-bezier(0.62,-0.99,0.54,1.9)] ${
+            isOpen ? 'translate-y-[-9px] -rotate-45' : ''
           }`}
         />
       </button>
 
-      <div className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row`}>{children}</div>
+      <div className={`${isOpen ? 'flex' : 'hidden'} flex-col md:flex md:flex-row`}>{children}</div>
     </>
   )
 }
