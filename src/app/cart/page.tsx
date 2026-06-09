@@ -22,7 +22,7 @@ export default function CartPage() {
 
   return (
     <div className="container py-8 pb-20">
-      <h3 className="text-[3.2rem] font-normal mb-6">
+      <h3 className="mb-6 text-[3.2rem] font-normal">
         Carrito{' '}
         {itemCount === 0 ? (
           <span className="text-[#6c757d]">(vacío)</span>
@@ -36,15 +36,15 @@ export default function CartPage() {
       {cart.length > 0 && (
         <>
           <div className="mt-6 mb-4">
-            <h4 className="text-[2.8rem] font-normal m-0 mb-1">
+            <h4 className="m-0 mb-1 text-[2.8rem] font-normal">
               Envío: ${shippingTotal.toLocaleString('es-AR')}
             </h4>
-            <h4 className="text-[2.8rem] font-normal m-0">
+            <h4 className="m-0 text-[2.8rem] font-normal">
               Total: ${itemsTotal.toLocaleString('es-AR')}
             </h4>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-3 mt-6">
+          <div className="mt-6 flex flex-col gap-3 md:flex-row">
             <button
               onClick={clearCart}
               className={`${btnBase} bg-[#212529] text-white hover:bg-[#31373d]`}

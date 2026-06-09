@@ -51,34 +51,34 @@ export default function CheckoutModal({
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-black/70 overflow-y-auto transition-opacity duration-200 ${
-        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      className={`fixed inset-0 z-50 overflow-y-auto bg-black/70 transition-opacity duration-200 ${
+        isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
-      <div className="bg-[#e9ecef] max-w-[95%] mx-auto mt-8 mb-8 p-8 max-h-[95vh] overflow-y-auto">
-        <h2 className="text-[3.6rem] font-normal mb-6">Finalizar compra</h2>
+      <div className="mx-auto mt-8 mb-8 max-h-[95vh] max-w-[95%] overflow-y-auto bg-[#e9ecef] p-8">
+        <h2 className="mb-6 text-[3.6rem] font-normal">Finalizar compra</h2>
 
-        <div className="bg-[#343a40] text-[#e9ecef] p-8 w-full mb-8">
-          <h4 className="text-[2.8rem] font-normal m-0 mb-2">
+        <div className="mb-8 w-full bg-[#343a40] p-8 text-[#e9ecef]">
+          <h4 className="m-0 mb-2 text-[2.8rem] font-normal">
             {itemCount} {itemCount === 1 ? 'reloj' : 'relojes'}
           </h4>
-          <h4 className="text-[2.8rem] font-normal m-0 mb-2">
+          <h4 className="m-0 mb-2 text-[2.8rem] font-normal">
             Envío: ${shippingTotal.toLocaleString('es-AR')}
           </h4>
-          <h3 className="text-[3.2rem] font-normal m-0 mb-2">
+          <h3 className="m-0 mb-2 text-[3.2rem] font-normal">
             Total: ${total.toLocaleString('es-AR')}
           </h3>
           {paymentMethod === 'credito' && installments > 1 && (
-            <p className="text-[#e9ecef] text-[1.6rem] m-0">
+            <p className="m-0 text-[1.6rem] text-[#e9ecef]">
               Pagarás en {installments} cuotas sin interés de $
               {Number(perInstallment).toLocaleString('es-AR')}
             </p>
           )}
         </div>
 
-        <form className="flex flex-col gap-4 mb-8" onSubmit={(e) => e.preventDefault()}>
+        <form className="mb-8 flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col gap-2">
-            <label className="font-bold text-[1.6rem]">Método de pago:</label>
+            <label className="text-[1.6rem] font-bold">Método de pago:</label>
             <select
               value={paymentMethod}
               onChange={(e) => {
@@ -92,12 +92,12 @@ export default function CheckoutModal({
             </select>
           </div>
           <div className="flex flex-col gap-2">
-            <label className="font-bold text-[1.6rem]">Cuotas:</label>
+            <label className="text-[1.6rem] font-bold">Cuotas:</label>
             <select
               value={installments}
               onChange={(e) => setInstallments(Number(e.target.value) as Installments)}
               disabled={paymentMethod !== 'credito'}
-              className={`${selectBase} disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`${selectBase} disabled:cursor-not-allowed disabled:opacity-50`}
             >
               <option value={1}>1 cuota</option>
               <option value={3}>3 cuotas sin interés</option>
@@ -108,17 +108,17 @@ export default function CheckoutModal({
         </form>
 
         <div className="mb-6">
-          <p className="text-[1.6rem] mb-4">¿Quiere concretar la compra?</p>
-          <div className="flex flex-col md:flex-row gap-3">
+          <p className="mb-4 text-[1.6rem]">¿Quiere concretar la compra?</p>
+          <div className="flex flex-col gap-3 md:flex-row">
             <button
               onClick={handleClose}
-              className="block w-full md:w-fit px-4 py-[1rem] text-[1.6rem] bg-transparent border-2 border-[#212529] text-[#212529] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9d9d9]"
+              className="block w-full cursor-pointer border-2 border-[#212529] bg-transparent px-4 py-[1rem] text-[1.6rem] text-[#212529] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9d9d9] md:w-fit"
             >
               Cancelar
             </button>
             <button
               onClick={handleConfirm}
-              className="block w-full md:w-fit px-4 py-[1rem] text-[1.6rem] bg-[#212529] text-white cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d]"
+              className="block w-full cursor-pointer bg-[#212529] px-4 py-[1rem] text-[1.6rem] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d] md:w-fit"
             >
               Comprar
             </button>

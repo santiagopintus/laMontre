@@ -47,11 +47,11 @@ export default function ContactForm() {
   const inputBase = 'p-4 text-[1.6rem] text-[#212529] border-0 outline-none'
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#6c757d] text-white p-8 md:px-[10rem]">
-      <h2 className="text-[3.6rem] font-normal mb-6">Déjanos tu opinión!</h2>
+    <form onSubmit={handleSubmit} className="bg-[#6c757d] p-8 text-white md:px-[10rem]">
+      <h2 className="mb-6 text-[3.6rem] font-normal">Déjanos tu opinión!</h2>
 
-      <div className="flex flex-col mb-8">
-        <label htmlFor="email" className="text-[1.6rem] mb-2">
+      <div className="mb-8 flex flex-col">
+        <label htmlFor="email" className="mb-2 text-[1.6rem]">
           Email:
         </label>
         <input
@@ -65,8 +65,8 @@ export default function ContactForm() {
         />
       </div>
 
-      <div className="flex flex-col mb-8">
-        <label htmlFor="mensaje" className="text-[1.6rem] mb-2">
+      <div className="mb-8 flex flex-col">
+        <label htmlFor="mensaje" className="mb-2 text-[1.6rem]">
           Mensaje:
         </label>
         <textarea
@@ -75,21 +75,21 @@ export default function ContactForm() {
           value={mensaje}
           onChange={(e) => setMensaje(e.target.value)}
           required
-          className={`${inputBase} h-40 md:h-60 resize-none`}
+          className={`${inputBase} h-40 resize-none md:h-60`}
         />
       </div>
 
       <button
         type="submit"
         disabled={submitting}
-        className="block w-full md:w-fit px-4 py-[1rem] text-[1.6rem] bg-[#212529] text-white cursor-pointer border-none transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d] disabled:opacity-60 disabled:cursor-not-allowed"
+        className="block w-full cursor-pointer border-none bg-[#212529] px-4 py-[1rem] text-[1.6rem] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d] disabled:cursor-not-allowed disabled:opacity-60 md:w-fit"
       >
         {submitting ? 'Enviando...' : 'Submit'}
       </button>
 
       {status && (
         <p
-          className={`mt-4 p-4 text-white text-[1.6rem] ${
+          className={`mt-4 p-4 text-[1.6rem] text-white ${
             status === 'success' ? 'bg-[#104b1a]' : 'bg-[#5e0915]'
           }`}
         >

@@ -32,19 +32,19 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
   return (
     <>
       <div className="container py-8">
-        <h2 className="text-[5.5vw] md:text-[4rem] font-normal text-center mb-8">
+        <h2 className="mb-8 text-center text-[5.5vw] font-normal md:text-[4rem]">
           {watch.marca} {watch.modelo}
         </h2>
 
         <div className="flex flex-col md:grid md:grid-cols-2 md:gap-8">
           <div className="relative">
             {!imageLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded">
-                <div className="w-10 h-10 border-4 border-[#212529] border-t-transparent rounded-full animate-spin" />
+              <div className="absolute inset-0 flex items-center justify-center rounded bg-gray-100">
+                <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#212529] border-t-transparent" />
               </div>
             )}
             <div
-              className="relative w-full aspect-square cursor-zoom-in"
+              className="relative aspect-square w-full cursor-zoom-in"
               onClick={() => setOverlayOpen(true)}
             >
               <Image
@@ -60,30 +60,30 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
           </div>
 
           <div className="mt-6 md:mt-0">
-            <ul className="list-none p-0 m-0 mb-6">
+            <ul className="m-0 mb-6 list-none p-0">
               {[
                 { label: 'Marca', value: watch.marca },
                 { label: 'Modelo', value: watch.modelo },
                 { label: 'Tipo', value: watch.tipo ? 'Digital' : 'Analógico' },
                 { label: 'Es smart', value: watch.smart ? 'Sí' : 'No' },
               ].map(({ label, value }) => (
-                <li key={label} className="font-bold mb-6 text-[1.6rem]">
+                <li key={label} className="mb-6 text-[1.6rem] font-bold">
                   {label}: <span className="font-normal">{value}</span>
                 </li>
               ))}
             </ul>
 
-            <hr className="border-[#212529] opacity-20 mb-4" />
+            <hr className="mb-4 border-[#212529] opacity-20" />
 
-            <div className="flex justify-between items-center mb-1">
-              <h3 className="text-[3.2rem] font-normal m-0">Precio:</h3>
-              <h3 className="text-[3.2rem] font-normal m-0">
+            <div className="mb-1 flex items-center justify-between">
+              <h3 className="m-0 text-[3.2rem] font-normal">Precio:</h3>
+              <h3 className="m-0 text-[3.2rem] font-normal">
                 ${watch.precio.toLocaleString('es-AR')}
               </h3>
             </div>
-            <div className="flex justify-between items-center mb-6">
-              <h4 className="text-[2.1rem] font-normal m-0">Envío:</h4>
-              <h4 className="text-[2.1rem] font-normal m-0">${envio.toLocaleString('es-AR')}</h4>
+            <div className="mb-6 flex items-center justify-between">
+              <h4 className="m-0 text-[2.1rem] font-normal">Envío:</h4>
+              <h4 className="m-0 text-[2.1rem] font-normal">${envio.toLocaleString('es-AR')}</h4>
             </div>
 
             <div className="flex flex-col gap-3">
@@ -104,7 +104,7 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
               </Link>
               <Link
                 href="/"
-                className={`${btnBase} bg-transparent border-2 border-[#212529] text-[#212529] hover:bg-[#d9d9d9]`}
+                className={`${btnBase} border-2 border-[#212529] bg-transparent text-[#212529] hover:bg-[#d9d9d9]`}
               >
                 Volver al inicio
               </Link>

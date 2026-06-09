@@ -7,14 +7,14 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="w-fit mx-auto text-center py-16 px-4">
-      <h2 className="text-[3.6rem] font-normal mb-20">Creo que te perdiste en el tiempo! :O</h2>
-      <p className="text-[2rem] mb-10 text-[#6c757d]">
+    <div className="mx-auto w-fit px-4 py-16 text-center">
+      <h2 className="mb-20 text-[3.6rem] font-normal">Creo que te perdiste en el tiempo! :O</h2>
+      <p className="mb-10 text-[2rem] text-[#6c757d]">
         No pudimos encontrar la página, o está en desarrollo...
       </p>
       <Link
         href="/"
-        className="inline-block px-4 py-[1rem] text-[1.6rem] bg-[#212529] text-white no-underline cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d]"
+        className="inline-block cursor-pointer bg-[#212529] px-4 py-[1rem] text-[1.6rem] text-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d]"
       >
         Volver al inicio
       </Link>

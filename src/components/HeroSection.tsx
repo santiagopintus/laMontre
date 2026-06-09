@@ -23,10 +23,10 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
   }, [phrases.length])
 
   return (
-    <section className="text-center py-8">
+    <section className="py-8 text-center">
       <div className="container">
-        <div className="md:grid md:grid-cols-2 md:gap-8 md:items-center text-left">
-          <div className="hidden md:flex justify-center">
+        <div className="text-left md:grid md:grid-cols-2 md:items-center md:gap-8">
+          <div className="hidden justify-center md:flex">
             <div className="max-w-540">
               <Image
                 src="/img/Home-watch.png"
@@ -38,7 +38,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
               />
             </div>
           </div>
-          <div className="hidden md:block text-[2.2rem] leading-relaxed tracking-[0.5px]">
+          <div className="hidden text-[2.2rem] leading-relaxed tracking-[0.5px] md:block">
             <p>
               <strong>La Montre</strong> es una tienda online de relojes que busca ayudar quienes
               aman los relojes a conseguir un compañero que esté en sus muñecas a donde sea que
@@ -51,7 +51,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
 
         {/* Random Phrases Container */}
         <h2
-          className={`text-left text-[3rem] md:text-[3.6rem] py-4 font-normal mb-6 italic transition-opacity duration-1000 ${
+          className={`mb-6 py-4 text-left text-[3rem] font-normal italic transition-opacity duration-1000 md:text-[3.6rem] ${
             visible ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -59,7 +59,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
         </h2>
       </div>
 
-      <hr className="mt-8 border-[#212529] opacity-20 mx-[5%]" />
+      <hr className="mx-[5%] mt-8 border-[#212529] opacity-20" />
     </section>
   )
 }

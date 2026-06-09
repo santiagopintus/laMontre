@@ -34,7 +34,7 @@ export default function SuccessToast({ isVisible, onHide }: SuccessToastProps) {
 
   return (
     <div
-      className={`fixed bottom-8 right-8 p-16 bg-white shadow-[0_2px_4px_-2px_rgba(0,0,0,0.7)] transition-opacity duration-500 ${
+      className={`fixed right-8 bottom-8 bg-white p-16 shadow-[0_2px_4px_-2px_rgba(0,0,0,0.7)] transition-opacity duration-500 ${
         fading ? 'opacity-0' : 'opacity-100'
       }`}
     >
@@ -49,8 +49,8 @@ export default function SuccessToast({ isVisible, onHide }: SuccessToastProps) {
             strokeLinejoin="round"
           />
         </svg>
-        <p className="text-[#212529] font-bold text-[1.8rem]">Compra realizada</p>
-        <p className="text-[#212529] text-[1.6rem]">¡Gracias por confiar en nosotros!</p>
+        <p className="text-[1.8rem] font-bold text-[#212529]">Compra realizada</p>
+        <p className="text-[1.6rem] text-[#212529]">¡Gracias por confiar en nosotros!</p>
       </div>
     </div>
   )

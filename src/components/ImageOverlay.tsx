@@ -102,13 +102,13 @@ export default function ImageOverlay({ src, alt, isOpen, onClose }: ImageOverlay
   return (
     <div
       className={`fixed inset-0 z-50 transition-opacity duration-200 ${
-        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
-      <div className="absolute inset-0 w-full h-full bg-black/70" onClick={onClose} />
+      <div className="absolute inset-0 h-full w-full bg-black/70" onClick={onClose} />
       <div
         ref={gestureAreaRef}
-        className="absolute z-[111] top-0 left-0 touch-none"
+        className="absolute top-0 left-0 z-111 touch-none"
         style={{ touchAction: 'none' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -116,7 +116,7 @@ export default function ImageOverlay({ src, alt, isOpen, onClose }: ImageOverlay
           ref={scaleElementRef}
           src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${src}`}
           alt={alt}
-          className="select-none w-[95vw] h-auto md:w-auto md:h-[95vh] md:mt-20 md:-translate-x-1/2"
+          className="h-auto w-[95vw] select-none md:mt-20 md:h-[95vh] md:w-auto md:-translate-x-1/2"
           draggable={false}
         />
       </div>

@@ -48,13 +48,13 @@ export default function CatalogSection({ watches }: CatalogSectionProps) {
 
   return (
     <section className="container pb-20">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center text-center md:text-left mb-10">
-        <h2 className="text-[3.6rem] font-normal mb-4 md:mb-0">Elige tu reloj favorito!</h2>
-        <div className="flex flex-col md:flex-row md:items-center gap-3">
+      <div className="mb-10 flex flex-col text-center md:flex-row md:items-center md:justify-between md:text-left">
+        <h2 className="mb-4 text-[3.6rem] font-normal md:mb-0">Elige tu reloj favorito!</h2>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center">
           <label htmlFor="orden" className="text-[1.6rem]">
             Ordenar por:
           </label>
-          <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-col gap-2 md:flex-row">
             <select
               id="orden"
               value={sortField}
@@ -78,7 +78,7 @@ export default function CatalogSection({ watches }: CatalogSectionProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {sortedWatches.map(({ watch, idx }) => (
           <WatchCard key={idx} watch={watch} index={idx} />
         ))}
