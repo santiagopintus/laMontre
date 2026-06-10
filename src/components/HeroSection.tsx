@@ -29,7 +29,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
           <div className="hidden justify-center md:flex">
             <div className="max-w-540">
               <Image
-                src="./img/Home-watch.png"
+                src="/img/Home-watch.png"
                 alt="Imagen principal de La Montre"
                 width={540}
                 height={360}
@@ -59,7 +59,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
         </h2>
       </div>
 
-      <hr className="mx-[5%] mt-8 border-[#212529] opacity-20" />
+      <hr className="mx-[5%] mt-8 border-primary opacity-20" />
     </section>
   )
 }

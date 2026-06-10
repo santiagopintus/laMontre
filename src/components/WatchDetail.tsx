@@ -6,16 +6,19 @@ import type { Watch } from '@/types'
 import { useCart } from '@/context/CartContext'
 import ImageOverlay from './ImageOverlay'
 import Button from '@/components/ui/Button'
+import SuccessToast from '@/components/SuccessToast'
+import { AddShoppingCart } from '@mui/icons-material'
 
 interface WatchDetailProps {
   watch: Watch
 }
 
 export default function WatchDetail({ watch }: WatchDetailProps) {
-  const { addItem, itemCount } = useCart()
+  const { addItem, cartCount } = useCart()
   const [imageLoaded, setImageLoaded] = useState(false)
   const [overlayOpen, setOverlayOpen] = useState(false)
   const [addedCount, setAddedCount] = useState(0)
+  const [showToast, setShowToast] = useState(false)
 
   const envio = Math.round(watch.precio * 0.03)
   const imageSrc = `/img/watches/${watch.source}.webp`
@@ -24,6 +27,7 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
   const handleAddToCart = () => {
     addItem({ ...watch, envio })
     setAddedCount((prev) => prev + 1)
+    setShowToast(true)
   }
 
   return (
@@ -37,7 +41,7 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
           <div className="relative">
             {!imageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center rounded bg-gray-100">
-                <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#212529] border-t-transparent" />
+                <div className="border-primary h-10 w-10 animate-spin rounded-full border-4 border-t-transparent" />
               </div>
             )}
             <div
@@ -56,7 +60,7 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
             </div>
           </div>
 
-          <div className="mt-6 md:mt-0">
+          <div className="mt-6 flex flex-col justify-between md:mt-0">
             <ul className="m-0 mb-6 list-none p-0">
               {[
                 { label: 'Marca', value: watch.marca },
@@ -70,32 +74,36 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
               ))}
             </ul>
 
-            <hr className="mb-4 border-[#212529] opacity-20" />
+            <div>
+              <hr className="border-primary mb-4 opacity-20" />
 
-            <div className="mb-1 flex items-center justify-between">
-              <h3 className="m-0 text-[3.2rem] font-normal">Precio:</h3>
-              <h3 className="m-0 text-[3.2rem] font-normal">
-                ${watch.precio.toLocaleString('es-AR')}
-              </h3>
-            </div>
-            <div className="mb-6 flex items-center justify-between">
-              <h4 className="m-0 text-[2.1rem] font-normal">Envío:</h4>
-              <h4 className="m-0 text-[2.1rem] font-normal">${envio.toLocaleString('es-AR')}</h4>
-            </div>
+              <div className="mb-1 flex items-center justify-between">
+                <h3 className="m-0 text-[3.2rem] font-normal">Precio:</h3>
+                <h3 className="m-0 text-[3.2rem] font-normal">
+                  ${watch.precio.toLocaleString('es-AR')}
+                </h3>
+              </div>
+              <div className="mb-6 flex items-center justify-between">
+                <h4 className="m-0 text-[2.1rem] font-normal">Envío:</h4>
+                <h4 className="m-0 text-[2.1rem] font-normal">${envio.toLocaleString('es-AR')}</h4>
+              </div>
 
-            <div className="flex flex-col gap-3">
-              <Button onClick={handleAddToCart} className="block w-full">
-                Agregar al carrito
-                {addedCount + itemCount > 0 && (
-                  <span className="ml-2">({addedCount + itemCount})</span>
-                )}
-              </Button>
-              <Button href="/cart" className="block w-full">
-                Ver carrito
-              </Button>
-              <Button variant="secondary" href="/" className="block w-full">
-                Volver al inicio
-              </Button>
+              <div className="flex flex-col gap-3">
+                <Button
+                  onClick={handleAddToCart}
+                  className="flex w-full items-center justify-center gap-2"
+                >
+                  <AddShoppingCart />
+                  Agregar al carrito
+                </Button>
+                <Button href="/cart" className="block w-full">
+                  Ver carrito
+                  {cartCount > 0 && <span className="ml-2">({cartCount})</span>}
+                </Button>
+                <Button variant="secondary" href="/" className="block w-full">
+                  Volver al inicio
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -106,6 +114,12 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
         alt={imageAlt}
         isOpen={overlayOpen}
         onClose={() => setOverlayOpen(false)}
+      />
+      <SuccessToast
+        isVisible={showToast}
+        onHide={() => setShowToast(false)}
+        title="Agregado al carrito"
+        body={`${watch.marca} ${watch.modelo}`}
       />
     </>
   )

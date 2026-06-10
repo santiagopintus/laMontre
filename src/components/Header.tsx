@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import MobileMenu from './MobileMenu'
-import CartCount from './CartCount'
+import NavLinks from './NavLinks'
+import CartCount from './Cart/CartCount'
 
 export default function Header() {
   return (
-    <header className="bg-[#e9ecef] py-8 md:py-0">
+    <header className="bg-surface py-8">
       <div className="container flex items-center justify-between py-5">
         <Link href="/" className="mb-4 flex justify-center md:mb-0 md:justify-start">
           <Image
-            src="./img/logo.svg"
+            src="/img/logo.svg"
             alt="Logo de La Montre"
             width={200}
             height={60}
@@ -19,7 +19,7 @@ export default function Header() {
         </Link>
 
         <nav>
-          <MobileMenu>
+          <NavLinks>
             <ul className="m-0 list-none p-0 text-center md:text-left">
               {[
                 { href: '/', label: 'Inicio' },
@@ -28,11 +28,11 @@ export default function Header() {
               ].map(({ href, label, count }) => (
                 <li
                   key={href}
-                  className="relative block py-4 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#212529] after:transition-[width] after:duration-500 after:ease-in-out hover:after:w-full md:inline-block md:px-4 md:py-0"
+                  className="after:bg-primary relative block py-4 after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-[width] after:duration-500 after:ease-in-out hover:after:w-full md:inline-block md:py-0 md:after:absolute"
                 >
                   <Link
                     href={href}
-                    className="text-[2.4rem] text-[#212529] no-underline transition-[letter-spacing] duration-500 hover:tracking-[0.1rem] md:text-[1.6rem]"
+                    className="text-primary text-[2.4rem] no-underline transition-[letter-spacing] duration-500 md:px-4 md:text-[1.6rem]"
                   >
                     {label}
                     {count && <CartCount />}
@@ -40,7 +40,7 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-          </MobileMenu>
+          </NavLinks>
         </nav>
       </div>
     </header>

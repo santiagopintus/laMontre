@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto w-fit px-4 py-16 text-center">
       <h2 className="mb-20 text-[3.6rem] font-normal">Creo que te perdiste en el tiempo! :O</h2>
-      <p className="mb-10 text-[2rem] text-[#6c757d]">
+      <p className="mb-10 text-[2rem] text-muted">
         No pudimos encontrar la página, o está en desarrollo...
       </p>
       <Button href="/">Volver al inicio</Button>

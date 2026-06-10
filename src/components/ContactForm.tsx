@@ -45,10 +45,10 @@ export default function ContactForm() {
     }
   }
 
-  const inputBase = 'p-4 text-[1.6rem] text-[#212529] border-0 outline-none'
+  const inputBase = 'p-4 text-[1.6rem] text-primary border-0 outline-none'
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#6c757d] p-8 text-white md:px-[10rem]">
+    <form onSubmit={handleSubmit} className="bg-muted p-8 text-white md:px-[10rem]">
       <h2 className="mb-6 text-[3.6rem] font-normal">Déjanos tu opinión!</h2>
 
       <div className="mb-8 flex flex-col">
@@ -91,7 +91,7 @@ export default function ContactForm() {
       {status && (
         <p
           className={`mt-4 p-4 text-[1.6rem] text-white ${
-            status === 'success' ? 'bg-[#104b1a]' : 'bg-[#5e0915]'
+            status === 'success' ? 'bg-success' : 'bg-error'
           }`}
         >
           {status === 'success'

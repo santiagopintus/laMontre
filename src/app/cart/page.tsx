@@ -2,13 +2,13 @@
 
 import { useState, useCallback } from 'react'
 import { useCart } from '@/context/CartContext'
-import CartList from '@/components/CartList'
+import CartList from '@/components/Cart/CartList'
 import CheckoutModal from '@/components/CheckoutModal'
 import SuccessToast from '@/components/SuccessToast'
 import Button from '@/components/ui/Button'
 
 export default function CartPage() {
-  const { cart, clearCart, itemCount, shippingTotal, itemsTotal } = useCart()
+  const { cart, clearCart, cartCount: itemCount, shippingTotal, itemsTotal } = useCart()
   const [showModal, setShowModal] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
@@ -22,11 +22,7 @@ export default function CartPage() {
     <div className="container py-8 pb-20">
       <h3 className="mb-6 text-[3.2rem] font-normal">
         Carrito{' '}
-        {itemCount === 0 ? (
-          <span className="text-[#6c757d]">(vacío)</span>
-        ) : (
-          <span>({itemCount})</span>
-        )}
+        {itemCount === 0 ? <span className="text-muted">(vacío)</span> : <span>({itemCount})</span>}
       </h3>
 
       <CartList />
@@ -62,7 +58,12 @@ export default function CartPage() {
         itemCount={itemCount}
       />
 
-      <SuccessToast isVisible={showToast} onHide={() => setShowToast(false)} />
+      <SuccessToast
+        isVisible={showToast}
+        onHide={() => setShowToast(false)}
+        title="Compra realizada"
+        body="¡Gracias por confiar en nosotros!"
+      />
     </div>
   )
 }

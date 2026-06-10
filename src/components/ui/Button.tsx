@@ -30,8 +30,8 @@ const base =
   'px-4 py-[1rem] text-[1.6rem] text-center no-underline cursor-pointer transition-all duration-200 hover:-translate-y-0.5'
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-[#212529] text-white hover:bg-[#31373d]',
-  secondary: 'border-2 border-[#212529] bg-transparent text-[#212529] hover:bg-[#d9d9d9]',
+  primary: 'bg-primary text-white hover:bg-primary-hover',
+  secondary: 'border-2 border-primary bg-transparent text-primary hover:bg-surface-hover',
 }
 
 export default function Button({

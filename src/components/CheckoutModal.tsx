@@ -48,7 +48,7 @@ export default function CheckoutModal({
     onClose()
   }
 
-  const selectBase = 'border border-[#d1d8de] bg-white px-3 py-2 text-[1.6rem] w-full'
+  const selectBase = 'border border-line bg-white px-3 py-2 text-[1.6rem] w-full'
 
   return (
     <div
@@ -56,10 +56,10 @@ export default function CheckoutModal({
         isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
-      <div className="mx-auto mt-8 mb-8 max-h-[95vh] max-w-[95%] overflow-y-auto bg-[#e9ecef] p-8">
+      <div className="bg-surface mx-auto mt-8 mb-8 max-h-[95vh] max-w-[95%] overflow-y-auto p-8">
         <h2 className="mb-6 text-[3.6rem] font-normal">Finalizar compra</h2>
 
-        <div className="mb-8 w-full bg-[#343a40] p-8 text-[#e9ecef]">
+        <div className="bg-secondary text-surface mb-8 w-full p-8">
           <h4 className="m-0 mb-2 text-[2.8rem] font-normal">
             {itemCount} {itemCount === 1 ? 'reloj' : 'relojes'}
           </h4>
@@ -70,7 +70,7 @@ export default function CheckoutModal({
             Total: ${total.toLocaleString('es-AR')}
           </h3>
           {paymentMethod === 'credito' && installments > 1 && (
-            <p className="m-0 text-[1.6rem] text-[#e9ecef]">
+            <p className="text-surface m-0 text-[1.6rem]">
               Pagarás en {installments} cuotas sin interés de $
               {Number(perInstallment).toLocaleString('es-AR')}
             </p>
@@ -120,8 +120,8 @@ export default function CheckoutModal({
           </div>
         </div>
 
-        <div className="border-t border-[#212529]/20 pt-4">
-          <p className="text-[1.4rem] text-[#6c757d]">
+        <div className="border-primary/20 border-t pt-4">
+          <p className="text-muted text-[1.4rem]">
             Esta compra es un simulador y no se le pedirán los datos de su tarjeta
           </p>
         </div>

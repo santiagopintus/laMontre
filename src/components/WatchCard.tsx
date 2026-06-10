@@ -44,7 +44,7 @@ export default function WatchCard({ watch, index }: WatchCardProps) {
     >
       <div className="relative mt-4 aspect-square w-full">
         <Image
-          src={`./img/watches/${watch.source}.webp`}
+          src={`/img/watches/${watch.source}.webp`}
           alt={`Reloj ${watch.marca} ${watch.modelo}`}
           fill
           className="object-contain"
@@ -53,15 +53,15 @@ export default function WatchCard({ watch, index }: WatchCardProps) {
       </div>
 
       <div className="mt-4">
-        <p className="text-center text-[2rem] font-normal text-[#212529] md:text-[2.5rem]">
+        <p className="text-primary text-center text-[2rem] font-normal md:text-[2.5rem]">
           {watch.marca} {watch.modelo}
         </p>
-        <p className="text-center text-[1.8rem] font-normal text-[#212529] md:text-[3rem]">
+        <p className="text-primary text-center text-[1.8rem] font-normal md:text-[3rem]">
           ${watch.precio.toLocaleString('es-AR')}
         </p>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full translate-y-full bg-[#343a40] py-8 transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+      <div className="bg-secondary absolute bottom-0 left-0 w-full translate-y-full py-8 transition-transform duration-300 ease-in-out group-hover:translate-y-0">
         <p className="text-center text-white">Tipo: {watch.tipo ? 'Digital' : 'Analógico'}</p>
         <p className="text-center text-white">Es smart: {watch.smart ? 'Sí' : 'No'}</p>
       </div>

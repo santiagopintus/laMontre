@@ -44,7 +44,7 @@ export default function CatalogSection({ watches }: CatalogSectionProps) {
     setSortDirection('asc')
   }
 
-  const selectBase = 'border border-[#d1d8de] bg-white px-3 py-2 text-[1.6rem] cursor-pointer'
+  const selectBase = 'border border-line bg-white px-3 py-2 text-[1.6rem] cursor-pointer'
 
   return (
     <section className="container pb-20">
