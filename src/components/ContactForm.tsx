@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import Button from '@/components/ui/Button'
 
 type StatusType = 'success' | 'error' | null
 
@@ -79,13 +80,13 @@ export default function ContactForm() {
         />
       </div>
 
-      <button
+      <Button
         type="submit"
         disabled={submitting}
-        className="block w-full cursor-pointer border-none bg-[#212529] px-4 py-[1rem] text-[1.6rem] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d] disabled:cursor-not-allowed disabled:opacity-60 md:w-fit"
+        className="block w-full md:w-fit"
       >
         {submitting ? 'Enviando...' : 'Submit'}
-      </button>
+      </Button>
 
       {status && (
         <p

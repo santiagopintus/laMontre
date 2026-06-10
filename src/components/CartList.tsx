@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
+import Button from '@/components/ui/Button'
 
 export default function CartList() {
   const { cart, removeItem } = useCart()
@@ -13,12 +13,7 @@ export default function CartList() {
         <p className="mb-6 text-[2rem] text-[#212529]">
           No sabés cuál llevar? Mirá todos nuestros relojes y elegí el tuyo!
         </p>
-        <Link
-          href="/"
-          className="inline-block cursor-pointer bg-[#212529] p-4 text-[1.6rem] text-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d]"
-        >
-          Ver relojes
-        </Link>
+        <Button href="/">Ver relojes</Button>
       </div>
     )
   }
@@ -48,12 +43,9 @@ export default function CartList() {
             <p className="m-0 text-[1.6rem]">Tipo: {item.tipo ? 'Digital' : 'Analógico'}</p>
             <p className="m-0 text-[1.6rem]">Es smart: {item.smart ? 'Sí' : 'No'}</p>
             <p className="m-0 text-[1.6rem]">${item.precio.toLocaleString('es-AR')}</p>
-            <button
-              onClick={() => removeItem(i)}
-              className="mt-2 w-full cursor-pointer border-none bg-[#212529] p-4 text-[1.6rem] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d] md:w-fit"
-            >
+            <Button onClick={() => removeItem(i)} className="mt-2 w-full md:w-fit">
               Eliminar
-            </button>
+            </Button>
           </div>
         </div>
       ))}

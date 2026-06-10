@@ -3,6 +3,7 @@ import { Noto_Serif } from 'next/font/google'
 import './globals.css'
 import { CartProvider } from '@/context/CartContext'
 import Header from '../components/Header'
+import Footer from '@/components/Footer'
 
 const notoSerif = Noto_Serif({
   variable: '--font-noto-serif',
@@ -22,17 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <Header />
           <main>{children}</main>
-          <footer className="py-8 text-center text-[1.4rem] text-[#212529]">
-            Desarrollado por{' '}
-            <a
-              href="https://github.com/SantiagoPintus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#FF9D5C] no-underline hover:underline"
-            >
-              Santiago Pintus
-            </a>
-          </footer>
+          <Footer />
         </CartProvider>
       </body>
     </html>

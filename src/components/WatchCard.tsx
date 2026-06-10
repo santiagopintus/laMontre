@@ -44,7 +44,7 @@ export default function WatchCard({ watch, index }: WatchCardProps) {
     >
       <div className="relative mt-4 aspect-square w-full">
         <Image
-          src={`/img/watches/${watch.source}.webp`}
+          src={`./img/watches/${watch.source}.webp`}
           alt={`Reloj ${watch.marca} ${watch.modelo}`}
           fill
           className="object-contain"

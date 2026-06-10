@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Button from '@/components/ui/Button'
 
 interface CheckoutModalProps {
   isOpen: boolean
@@ -110,18 +111,12 @@ export default function CheckoutModal({
         <div className="mb-6">
           <p className="mb-4 text-[1.6rem]">¿Quiere concretar la compra?</p>
           <div className="flex flex-col gap-3 md:flex-row">
-            <button
-              onClick={handleClose}
-              className="block w-full cursor-pointer border-2 border-[#212529] bg-transparent px-4 py-[1rem] text-[1.6rem] text-[#212529] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9d9d9] md:w-fit"
-            >
+            <Button variant="secondary" onClick={handleClose} className="block w-full md:w-fit">
               Cancelar
-            </button>
-            <button
-              onClick={handleConfirm}
-              className="block w-full cursor-pointer bg-[#212529] px-4 py-[1rem] text-[1.6rem] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#31373d] md:w-fit"
-            >
+            </Button>
+            <Button onClick={handleConfirm} className="block w-full md:w-fit">
               Comprar
-            </button>
+            </Button>
           </div>
         </div>
 

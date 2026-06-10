@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import type { Watch } from '@/types'
 import { useCart } from '@/context/CartContext'
 import ImageOverlay from './ImageOverlay'
+import Button from '@/components/ui/Button'
 
 interface WatchDetailProps {
   watch: Watch
@@ -25,9 +25,6 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
     addItem({ ...watch, envio })
     setAddedCount((prev) => prev + 1)
   }
-
-  const btnBase =
-    'block w-full px-4 py-[1rem] text-[1.6rem] text-center no-underline cursor-pointer transition-all duration-200 hover:-translate-y-0.5'
 
   return (
     <>
@@ -87,27 +84,18 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
             </div>
 
             <div className="flex flex-col gap-3">
-              <button
-                onClick={handleAddToCart}
-                className={`${btnBase} bg-[#212529] text-white hover:bg-[#31373d]`}
-              >
+              <Button onClick={handleAddToCart} className="block w-full">
                 Agregar al carrito
                 {addedCount + itemCount > 0 && (
                   <span className="ml-2">({addedCount + itemCount})</span>
                 )}
-              </button>
-              <Link
-                href="/cart"
-                className={`${btnBase} bg-[#212529] text-white hover:bg-[#31373d]`}
-              >
+              </Button>
+              <Button href="/cart" className="block w-full">
                 Ver carrito
-              </Link>
-              <Link
-                href="/"
-                className={`${btnBase} border-2 border-[#212529] bg-transparent text-[#212529] hover:bg-[#d9d9d9]`}
-              >
+              </Button>
+              <Button variant="secondary" href="/" className="block w-full">
                 Volver al inicio
-              </Link>
+              </Button>
             </div>
           </div>
         </div>

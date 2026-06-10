@@ -9,7 +9,7 @@ export default function Header() {
       <div className="container flex items-center justify-between py-5">
         <Link href="/" className="mb-4 flex justify-center md:mb-0 md:justify-start">
           <Image
-            src="/img/logo.svg"
+            src="./img/logo.svg"
             alt="Logo de La Montre"
             width={200}
             height={60}

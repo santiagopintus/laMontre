@@ -29,7 +29,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
           <div className="hidden justify-center md:flex">
             <div className="max-w-540">
               <Image
-                src="/img/Home-watch.png"
+                src="./img/Home-watch.png"
                 alt="Imagen principal de La Montre"
                 width={540}
                 height={360}
@@ -51,7 +51,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
 
         {/* Random Phrases Container */}
         <h2
-          className={`mb-6 py-4 text-left text-[3rem] font-normal italic transition-opacity duration-1000 md:text-[3.6rem] ${
+          className={`mb-6 min-h-[182px] py-4 text-left text-[3rem] leading-normal font-normal italic transition-opacity duration-1000 md:text-[3.6rem] ${
             visible ? 'opacity-100' : 'opacity-0'
           }`}
         >

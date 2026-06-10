@@ -5,6 +5,7 @@ import { useCart } from '@/context/CartContext'
 import CartList from '@/components/CartList'
 import CheckoutModal from '@/components/CheckoutModal'
 import SuccessToast from '@/components/SuccessToast'
+import Button from '@/components/ui/Button'
 
 export default function CartPage() {
   const { cart, clearCart, itemCount, shippingTotal, itemsTotal } = useCart()
@@ -16,9 +17,6 @@ export default function CartPage() {
     setShowModal(false)
     setShowToast(true)
   }, [clearCart])
-
-  const btnBase =
-    'block w-full md:w-fit px-4 py-[1rem] text-[1.6rem] cursor-pointer border-none transition-all duration-200 hover:-translate-y-0.5'
 
   return (
     <div className="container py-8 pb-20">
@@ -45,18 +43,12 @@ export default function CartPage() {
           </div>
 
           <div className="mt-6 flex flex-col gap-3 md:flex-row">
-            <button
-              onClick={clearCart}
-              className={`${btnBase} bg-[#212529] text-white hover:bg-[#31373d]`}
-            >
+            <Button onClick={clearCart} className="block w-full md:w-fit">
               Vaciar carrito
-            </button>
-            <button
-              onClick={() => setShowModal(true)}
-              className={`${btnBase} bg-[#212529] text-white hover:bg-[#31373d]`}
-            >
+            </Button>
+            <Button onClick={() => setShowModal(true)} className="block w-full md:w-fit">
               Ir a comprar
-            </button>
+            </Button>
           </div>
         </>
       )}
