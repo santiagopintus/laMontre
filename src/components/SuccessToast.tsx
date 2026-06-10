@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react'
 interface SuccessToastProps {
   isVisible: boolean
   onHide: () => void
+  title: string
+  body: string
 }
 
-export default function SuccessToast({ isVisible, onHide }: SuccessToastProps) {
+export default function SuccessToast({ isVisible, onHide, title, body }: SuccessToastProps) {
   const [fading, setFading] = useState(false)
   const [display, setDisplay] = useState(false)
 
@@ -40,7 +42,7 @@ export default function SuccessToast({ isVisible, onHide }: SuccessToastProps) {
     >
       <div className="flex flex-col items-center gap-3">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="20" fill="#198754" />
+          <circle cx="20" cy="20" r="20" fill="var(--color-success-icon)" />
           <path
             d="M10 20 L17 27 L30 13"
             stroke="white"
@@ -49,8 +51,8 @@ export default function SuccessToast({ isVisible, onHide }: SuccessToastProps) {
             strokeLinejoin="round"
           />
         </svg>
-        <p className="text-[1.8rem] font-bold text-[#212529]">Compra realizada</p>
-        <p className="text-[1.6rem] text-[#212529]">¡Gracias por confiar en nosotros!</p>
+        <p className="text-primary text-[1.8rem] font-bold">{title}</p>
+        <p className="text-primary text-[1.6rem]">{body}</p>
       </div>
     </div>
   )
