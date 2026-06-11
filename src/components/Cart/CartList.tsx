@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useCart } from '@/context/CartContext'
+import { assetPath } from '@/lib/assetPath'
 import Button from '@/components/ui/Button'
 import CartItemUnits from './CartItemUnits'
 
@@ -30,7 +31,7 @@ export default function CartList() {
         >
           <div className="relative h-80 w-full shrink-0 md:h-120 md:w-120">
             <Image
-              src={`/img/watches/${item.source}.webp`}
+              src={assetPath(`/img/watches/${item.source}.webp`)}
               alt={`${item.marca} ${item.modelo}`}
               fill
               className="object-contain"

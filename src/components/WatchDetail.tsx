@@ -6,6 +6,7 @@ import type { Watch } from '@/types'
 import { useCart } from '@/context/CartContext'
 import ImageOverlay from './ImageOverlay'
 import Button from '@/components/ui/Button'
+import { assetPath } from '@/lib/assetPath'
 import SuccessToast from '@/components/SuccessToast'
 import { AddShoppingCart } from '@mui/icons-material'
 
@@ -21,7 +22,7 @@ export default function WatchDetail({ watch }: WatchDetailProps) {
   const [showToast, setShowToast] = useState(false)
 
   const envio = Math.round(watch.precio * 0.03)
-  const imageSrc = `/img/watches/${watch.source}.webp`
+  const imageSrc = assetPath(`/img/watches/${watch.source}.webp`)
   const imageAlt = `${watch.marca} ${watch.modelo}`
 
   const handleAddToCart = () => {

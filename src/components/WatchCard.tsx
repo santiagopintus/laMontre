@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import type { Watch } from '@/types'
+import { assetPath } from '@/lib/assetPath'
 
 interface WatchCardProps {
   watch: Watch
@@ -22,7 +23,7 @@ export default function WatchCard({ watch, index }: WatchCardProps) {
       <div className="relative mt-4 aspect-square w-full">
         {!imageLoaded && <div className="bg-stripe absolute inset-0 animate-pulse rounded" />}
         <Image
-          src={`/img/watches/${watch.source}.webp`}
+          src={assetPath(`/img/watches/${watch.source}.webp`)}
           alt={`Reloj ${watch.marca} ${watch.modelo}`}
           fill
           className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { assetPath } from '@/lib/assetPath'
 
 interface HeroSectionProps {
   phrases: string[]
@@ -29,7 +30,7 @@ export default function HeroSection({ phrases }: HeroSectionProps) {
           <div className="hidden justify-center md:flex">
             <div className="md:max-w-320 lg:max-w-540">
               <Image
-                src="/img/Home-watch.png"
+                src={assetPath('/img/Home-watch.png')}
                 alt="Imagen principal de La Montre"
                 width={320}
                 height={360}
