@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-tailwind-i18n-template",
-  "version": "0.1.0",
+  "name": "la-montre",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
