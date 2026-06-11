@@ -71,12 +71,12 @@ export default function CheckoutModal({
           <h4 className="m-0 mb-2 text-[2rem] font-normal">
             Envío: ${shippingTotal.toLocaleString('es-AR')}
           </h4>
+          Pagarás en {installments} cuotas sin interés de $
           <h3 className="m-0 mb-2 text-[2.4rem] font-normal">
             Total: <span className="font-bold">${total.toLocaleString('es-AR')}</span>
           </h3>
           {paymentMethod === 'credito' && installments > 1 && (
             <p className="text-surface m-0 text-[1.6rem]">
-              Pagarás en {installments} cuotas sin interés de $
               {Number(perInstallment).toLocaleString('es-AR')}
             </p>
           )}
