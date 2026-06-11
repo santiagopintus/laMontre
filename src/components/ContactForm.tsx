@@ -45,11 +45,11 @@ export default function ContactForm() {
     }
   }
 
-  const inputBase = 'p-4 text-[1.6rem] text-primary border-0 outline-none'
+  const inputBase = 'p-4 text-[1.6rem] text-primary border-0 outline-none bg-white'
 
   return (
     <form onSubmit={handleSubmit} className="bg-muted p-8 text-white md:px-[10rem]">
-      <h2 className="mb-6 text-[3.6rem] font-normal">Déjanos tu opinión!</h2>
+      <h2 className="mb-6 text-[2.4rem] font-normal">Déjanos tu opinión!</h2>
 
       <div className="mb-8 flex flex-col">
         <label htmlFor="email" className="mb-2 text-[1.6rem]">
@@ -60,6 +60,7 @@ export default function ContactForm() {
           type="email"
           name="email"
           value={email}
+          placeholder="Tu dirección de email"
           onChange={(e) => setEmail(e.target.value)}
           required
           className={inputBase}
@@ -74,18 +75,15 @@ export default function ContactForm() {
           id="mensaje"
           name="mensaje"
           value={mensaje}
+          placeholder="Cuéntanos tu experiencia con nuestros productos, hay algún reloj que te gustaría que tengamos? O si simplemente querés saludarnos, escribinos!"
           onChange={(e) => setMensaje(e.target.value)}
           required
           className={`${inputBase} h-40 resize-none md:h-60`}
         />
       </div>
 
-      <Button
-        type="submit"
-        disabled={submitting}
-        className="block w-full md:w-fit"
-      >
-        {submitting ? 'Enviando...' : 'Submit'}
+      <Button type="submit" disabled={submitting} className="block w-full md:w-fit">
+        {submitting ? 'Enviando...' : 'Enviar'}
       </Button>
 
       {status && (

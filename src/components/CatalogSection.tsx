@@ -78,7 +78,7 @@ export default function CatalogSection({ watches }: CatalogSectionProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
         {sortedWatches.map(({ watch, idx }) => (
           <WatchCard key={idx} watch={watch} index={idx} />
         ))}

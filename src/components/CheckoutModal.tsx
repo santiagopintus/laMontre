@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Button from '@/components/ui/Button'
+import type { CartEntry } from '@/types'
 
 interface CheckoutModalProps {
   isOpen: boolean
@@ -9,7 +10,7 @@ interface CheckoutModalProps {
   onConfirm: () => void
   itemsTotal: number
   shippingTotal: number
-  itemCount: number
+  cart: CartEntry[]
 }
 
 type PaymentMethod = 'debito' | 'credito'
@@ -21,7 +22,7 @@ export default function CheckoutModal({
   onConfirm,
   itemsTotal,
   shippingTotal,
-  itemCount,
+  cart,
 }: CheckoutModalProps) {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('debito')
   const [installments, setInstallments] = useState<Installments>(1)
@@ -56,18 +57,22 @@ export default function CheckoutModal({
         isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
-      <div className="bg-surface mx-auto mt-8 mb-8 max-h-[95vh] max-w-[95%] overflow-y-auto p-8">
-        <h2 className="mb-6 text-[3.6rem] font-normal">Finalizar compra</h2>
+      <div className="bg-surface mx-auto mt-8 mb-8 max-h-[95vh] max-w-[95%] overflow-y-auto rounded-[0.5rem] p-8">
+        <h2 className="mb-6 text-[2.4rem] font-normal">Finalizar compra</h2>
 
-        <div className="bg-secondary text-surface mb-8 w-full p-8">
-          <h4 className="m-0 mb-2 text-[2.8rem] font-normal">
-            {itemCount} {itemCount === 1 ? 'reloj' : 'relojes'}
-          </h4>
-          <h4 className="m-0 mb-2 text-[2.8rem] font-normal">
+        <div className="mb-8 w-full p-8">
+          <ul className="m-0 mb-2 p-0">
+            {cart.map(({ item, quantity }) => (
+              <li key={item.source} className="text-[1.6rem]">
+                - {item.marca} {item.modelo} {quantity > 1 ? `(x${quantity})` : ''}
+              </li>
+            ))}
+          </ul>
+          <h4 className="m-0 mb-2 text-[2rem] font-normal">
             Envío: ${shippingTotal.toLocaleString('es-AR')}
           </h4>
-          <h3 className="m-0 mb-2 text-[3.2rem] font-normal">
-            Total: ${total.toLocaleString('es-AR')}
+          <h3 className="m-0 mb-2 text-[2.4rem] font-normal">
+            Total: <span className="font-bold">${total.toLocaleString('es-AR')}</span>
           </h3>
           {paymentMethod === 'credito' && installments > 1 && (
             <p className="text-surface m-0 text-[1.6rem]">

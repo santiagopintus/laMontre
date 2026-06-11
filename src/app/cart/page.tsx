@@ -55,7 +55,7 @@ export default function CartPage() {
         onConfirm={handleConfirmPurchase}
         itemsTotal={itemsTotal}
         shippingTotal={shippingTotal}
-        itemCount={itemCount}
+        cart={cart}
       />
 
       <SuccessToast

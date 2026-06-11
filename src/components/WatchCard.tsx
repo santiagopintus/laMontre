@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import type { Watch } from '@/types'
@@ -12,51 +12,30 @@ interface WatchCardProps {
 
 export default function WatchCard({ watch, index }: WatchCardProps) {
   const router = useRouter()
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   return (
     <div
-      ref={cardRef}
       onClick={() => router.push(`/watch/${index}`)}
-      className={`group relative mb-8 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[0.5rem] bg-white
-        p-4 shadow-[0px_5px_8px_-2px_rgba(0,0,0,0.35)] transition-all
-        duration-500
-        ease-out hover:translate-y-[-3px]
-        hover:shadow-[0px_7px_10px_0px_rgba(0,0,0,0.35)] md:mb-0
-        ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      className="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-[0.5rem] bg-white p-4 shadow-[0px_5px_8px_-2px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out hover:translate-y-[-3px] hover:shadow-[0px_7px_10px_0px_rgba(0,0,0,0.35)]"
     >
       <div className="relative mt-4 aspect-square w-full">
+        {!imageLoaded && <div className="bg-stripe absolute inset-0 animate-pulse rounded" />}
         <Image
           src={`/img/watches/${watch.source}.webp`}
           alt={`Reloj ${watch.marca} ${watch.modelo}`}
           fill
-          className="object-contain"
+          className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           sizes="(max-width: 768px) 67vw, 33vw"
+          onLoad={() => setImageLoaded(true)}
         />
       </div>
 
       <div className="mt-4">
-        <p className="text-primary text-center text-[2rem] font-normal md:text-[2.5rem]">
+        <p className="text-primary text-center text-[1.4rem] font-normal">
           {watch.marca} {watch.modelo}
         </p>
-        <p className="text-primary text-center text-[1.8rem] font-normal md:text-[3rem]">
+        <p className="text-primary text-center text-[2rem] font-normal">
           ${watch.precio.toLocaleString('es-AR')}
         </p>
       </div>
